@@ -1,0 +1,151 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+
+<link rel="import" href="../paper-autocomplete/paper-autocomplete.html">
+
+<dom-module id="paper-autocomplete-chips">
+	<template>
+		<style>
+			.box {
+				min-width: 24px;
+				background-color: red;
+			}
+			.chip {
+				border-radius: 500px;
+				background-color: #e0e0e0;
+				margin: 2px;
+				white-space: nowrap;
+				overflow: hidden;
+				height: 28px;
+				@apply --layout-horizontal;
+				@apply --layout-center;
+			}
+			.chip > span {
+				color: #424242;
+				margin-left: 12px;
+				font-size: 13px;
+			}
+			.chip iron-icon {
+				margin: 2px 4px;
+				color: #cdcdcd;
+				background-color: #a6a6a6;
+				border-radius: 500px;
+				cursor: pointer;
+				width: 20px;
+				height: 20px;
+			}
+		</style>
+		<paper-autocomplete id="ac" min-length="0" placeholder="Search" source="[[ items ]]" value="{{ _selection }}"
+				text-property="{{ textProperty }}" value-property="{{ valueProperty }}" query-fn="[[ queryFn ]]"
+				disable-show-clear>
+			<!-- <template slot="autocomplete-custom-template">
+				<paper-item id$="[[_getSuggestionId(index)]]" role="option" aria-selected="false" on-tap="_onSelect">
+					<div>meep[[_getMyItemText(item)]]</div>
+					<paper-ripple></paper-ripple>
+				</paper-item>
+			</template> -->
+				<template is="dom-repeat" items="[[ selectedItems ]]">
+					<div slot="suffix">
+						<div class="chip"><span>[[ _getChipText(item, textProperty) ]]</span><iron-icon icon="clear" on-tap="_clearItemSelection"></iron-icon></div>
+					</div>
+				</template>
+		</paper-autocomplete>
+	</template>
+
+	<script>
+
+		Polymer({
+
+			is: 'paper-autocomplete-chips',
+
+			properties: {
+				items: {
+					type: Array
+				},
+
+				queryFn: {
+					type: Function,
+					value: function () {
+						var me = this;
+						return function (datasource, query) {
+							return datasource
+								.map(function (item) {
+									if (typeof item === 'object') {
+										return {
+											item: item,
+											text: item[this.textProperty],
+											value: item[this.valueProperty]
+										};
+									}
+									var objText = item.toString();
+									return {
+										item: item,
+										text: objText,
+										value: objText
+									};
+								}, this)
+								.filter(function (item) {
+									var alreadySelected = me.selectedItems.indexOf(item.item) !== -1;
+									if (alreadySelected) {
+										return false;
+									}
+									return item.text.toLowerCase().indexOf(query) !== -1;
+								}, this);
+						};
+					}
+				},
+
+				selectedItems: {
+					type: Array,
+					value: function () {
+						return [];
+					}
+				},
+
+				textProperty: {
+					type: String,
+					value: 'text'
+				},
+
+				valueProperty: {
+					type: String,
+					value: 'value'
+				},
+
+				_selection: {
+					type: Object,
+					observer: '_selectionChanged'
+				}
+
+			},
+
+			_clearItemSelection: function (event, detail) {
+				var item = event.model.item,
+					selectedIndex = this.selectedItems.indexOf(item);
+				this.splice('selectedItems', selectedIndex, 1);
+			},
+
+			_getMyItemText: function (item) {
+				return 'mooop' + item.text;
+			},
+
+			_getChipText: function (item, textProperty) {
+				if (typeof item === 'object') {
+					return item[textProperty] || item.text;
+				}
+				return item;
+			},
+
+			_selectionChanged: function (newSelection) {
+				if (newSelection === null) {
+					return;
+				}
+				this.push('selectedItems', this.$.ac._selectedOption.item);
+				this.async(function () {
+					this.$.ac.clear();
+				});
+			}
+		});
+	</script>
+</dom-module>

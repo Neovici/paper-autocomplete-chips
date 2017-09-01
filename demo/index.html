@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+		<title>paper-autocomplete-chips demo</title>
+
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+		<link rel="import" href="../../polymer/polymer.html">
+		<link rel="import" href="../../paper-styles/demo-pages.html">
+		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+		<link rel="import" href="../paper-autocomplete-chips.html">
+
+		<style is="custom-style" include="demo-pages-shared-styles">
+			div {
+				max-width: 1200px !important;
+			}
+			.box {
+				background-color: red;
+				min-width: 24px;
+				width: 24px;
+			}
+		</style>
+		<style>
+		</style>
+	</head>
+	<body>
+		<!-- multi selection selected items -->
+		<div class="vertical-section-container centered">
+			<h4>Basic</h4>
+			<demo-snippet>
+					<paper-autocomplete-chips
+						id="t1"
+						multi-selection
+						placeholder="Search">
+                    </paper-autocomplete-chips>
+                    <paper-autocomplete-chips
+                    id="t2"
+                    multi-selection
+                    placeholder="Search">
+                </paper-autocomplete-chips>
+			</demo-snippet>
+		</div>
+
+		<script>
+			(function () {
+				var demoItems,
+					i,
+					t;
+
+				document.querySelector('#t1').items = [{
+						value: 'one',
+			test: 'test',
+						text: 'Red selection'
+					}, {
+					id: 'two',
+					text: 'Blue selection'
+				}, {
+					id: 'three',
+					text: 'Green selection'
+				}, {
+					id: 'four',
+					text: 'Yellow selection'
+				}, {
+					id: 'five',
+					text: 'White selection'
+				}, {
+					id: 'six',
+					text: 'Black selection'
+				}];
+
+	document.querySelector('#t2').items = [
+	'Red',
+	'Green',
+	'Yellow'
+];
+
+				t = new Array(11);
+				for (i = 1; i <= 10; i += 1) {
+					t[i] = document.querySelector('#t' + i);
+					if (!t[i]) {
+						continue;
+					}
+					if (i !== 3 || i !== 4) {
+						t[i].demoItems = demoItems;
+					}
+				}
+			})();
+		</script>
+	</body>
+</html>
