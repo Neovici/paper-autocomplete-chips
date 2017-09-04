@@ -21,24 +21,17 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.0.0",
+    "polymer": "Polymer/polymer#^1.9.0",
     "paper-autocomplete": "^3.1.0",
-    "iron-icon": "^1.0.0"
+    "iron-icon": "^2.0.0"
   },
   "devDependencies": {
-    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-component-page": "PolymerElements/iron-component-page#^2.0.0",
     "web-component-tester": "^4.2.1",
-    "iron-test-helpers": "PolymerElements/iron-test-helpers#^1.0.0",
-    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0"
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#^2.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0"
   },
   "resolutions": {
-    "webcomponentsjs": "^0.7.24",
-    "iron-flex-layout": "^1.0.0",
-    "iron-icon": "^1.0.0",
-    "iron-icons": "^1.0.0",
-    "iron-iconset-svg": "^1.0.0",
-    "paper-ripple": "^1.0.0",
-    "paper-material": "^1.0.0",
-    "iron-location": "^0.8.0"
+    "webcomponentsjs": "^0.7.24"
   }
 }
