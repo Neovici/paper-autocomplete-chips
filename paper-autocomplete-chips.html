@@ -11,10 +11,15 @@
 				min-width: 24px;
 				background-color: red;
 			}
+			#chips {
+				@apply --layout-horizontal;
+				@apply --layout-end;
+				@apply --layout-wrap;
+			}
 			.chip {
 				border-radius: 500px;
 				background-color: #e0e0e0;
-				margin: 2px;
+				margin-right: 4px;
 				white-space: nowrap;
 				overflow: hidden;
 				height: 28px;
@@ -37,19 +42,13 @@
 			}
 		</style>
 		<paper-autocomplete id="ac" min-length="0" placeholder="Search" source="[[ items ]]" value="{{ _selection }}"
-				text-property="{{ textProperty }}" value-property="{{ valueProperty }}" query-fn="[[ queryFn ]]"
-				disable-show-clear>
-			<!-- <template slot="autocomplete-custom-template">
-				<paper-item id$="[[_getSuggestionId(index)]]" role="option" aria-selected="false" on-tap="_onSelect">
-					<div>meep[[_getMyItemText(item)]]</div>
-					<paper-ripple></paper-ripple>
-				</paper-item>
-			</template> -->
+				text-property="[[ textProperty ]]" value-property="" query-fn="[[ queryFn ]]"
+				disable-show-clear text="{{ text }}">
+			<div prefix slot="prefix" id="chips">
 				<template is="dom-repeat" items="[[ selectedItems ]]">
-					<div slot="suffix">
 						<div class="chip"><span>[[ _getChipText(item, textProperty) ]]</span><iron-icon icon="clear" on-tap="_clearItemSelection"></iron-icon></div>
-					</div>
-				</template>
+					</template>
+				</div>
 		</paper-autocomplete>
 	</template>
 
@@ -67,40 +66,81 @@
 				queryFn: {
 					type: Function,
 					value: function () {
-						var me = this;
-						return function (datasource, query) {
-							return datasource
-								.map(function (item) {
-									if (typeof item === 'object') {
-										return {
-											item: item,
-											text: item[this.textProperty],
-											value: item[this.valueProperty]
-										};
+						var me = this,
+							maxResults = 30,
+							regexpResult = '<b>$1</b>',
+							getResult = function (item, textProp, valueProp) {
+								var objText,
+									value;
+
+								if (typeof item === 'object') {
+									if (!valueProp) {
+										value = item;
+									} else {
+										value = item[valueProp];
 									}
-									var objText = item.toString();
 									return {
-										item: item,
-										text: objText,
-										value: objText
+										text: item[textProp],
+										value: value
 									};
-								}, this)
-								.filter(function (item) {
-									var alreadySelected = me.selectedItems.indexOf(item.item) !== -1;
-									if (alreadySelected) {
-										return false;
-									}
-									return item.text.toLowerCase().indexOf(query) !== -1;
-								}, this);
+								}
+								objText = item.toString();
+								return {
+									text: objText,
+									value: objText
+								};
+							};
+		
+						return function (datasource, query) {
+							var i,
+								item,
+								result,
+								results = [];
+
+							for (i = 0; i < datasource.length; i += 1) {
+								item = datasource[i];
+
+								// already selected
+								if (me.selectedItems.indexOf(item) !== -1) {
+									continue;
+								}
+
+								result = getResult(item, this.textProperty, this.valueProperty);
+
+								if (result.text.toLowerCase().indexOf(query) !== -1) {
+									result.text = result.text.replace(new RegExp('(' + query + ')', 'ig'), regexpResult);
+									results.push(result);
+								}
+
+								if (results.length >= maxResults) {
+									break;
+								}
+							}
+
+							return results.sort(function (a, b) {
+								if (a.text < b.text) {
+									return -1;
+								}
+								if (a.text > b.text) {
+									return 1;
+								}
+								return 0;
+							});
 						};
 					}
 				},
 
 				selectedItems: {
 					type: Array,
+					notify: true,
 					value: function () {
 						return [];
 					}
+				},
+
+				text: {
+					type: String,
+					notify: true
 				},
 
 				textProperty: {
@@ -141,7 +181,7 @@
 				if (newSelection === null) {
 					return;
 				}
-				this.push('selectedItems', this.$.ac._selectedOption.item);
+				this.push('selectedItems', newSelection);
 				this.async(function () {
 					this.$.ac.clear();
 				});

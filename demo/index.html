@@ -34,7 +34,7 @@
 			<demo-snippet>
 					<paper-autocomplete-chips
 						id="t1"
-						multi-selection
+						text-property="label"
 						placeholder="Search">
                     </paper-autocomplete-chips>
                     <paper-autocomplete-chips
@@ -52,31 +52,31 @@
 					t;
 
 				document.querySelector('#t1').items = [{
-						value: 'one',
-			test: 'test',
-						text: 'Red selection'
-					}, {
+					value: 'one',
+					test: 'test',
+					label: 'Red selection'
+				}, {
 					id: 'two',
-					text: 'Blue selection'
+					label: 'Blue selection'
 				}, {
 					id: 'three',
-					text: 'Green selection'
+					label: 'Green selection'
 				}, {
 					id: 'four',
-					text: 'Yellow selection'
+					label: 'Yellow selection'
 				}, {
 					id: 'five',
-					text: 'White selection'
+					label: 'White selection'
 				}, {
 					id: 'six',
-					text: 'Black selection'
+					label: 'Black selection'
 				}];
 
 	document.querySelector('#t2').items = [
-	'Red',
-	'Green',
-	'Yellow'
-];
+		'Red',
+		'Green',
+		'Yellow'
+	];
 
 				t = new Array(11);
 				for (i = 1; i <= 10; i += 1) {

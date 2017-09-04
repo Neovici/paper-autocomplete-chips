@@ -22,7 +22,7 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.9.0",
-    "paper-autocomplete": "^3.1.0",
+    "paper-autocomplete": "neovici/paper-autocomplete#master",
     "iron-icon": "^2.0.0"
   },
   "devDependencies": {
