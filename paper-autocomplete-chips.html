@@ -15,6 +15,7 @@
 				@apply --layout-horizontal;
 				@apply --layout-end;
 				@apply --layout-wrap;
+				max-width: 90%;
 			}
 			.chip {
 				border-radius: 500px;
@@ -37,7 +38,9 @@
 				background-color: #a6a6a6;
 				border-radius: 500px;
 				cursor: pointer;
+				min-width: 20px;
 				width: 20px;
+				min-height: 20px;
 				height: 20px;
 			}
 		</style>
@@ -196,6 +199,13 @@
 				this.push('selectedItems', newSelection);
 				this.async(function () {
 					this.$.ac.clear();
+
+					// FIXME
+					this.$.ac.$.paperAutocompleteSuggestions._handleSuggestions({
+						target: {
+							value: ''
+						}
+					});
 				});
 			}
 		});
