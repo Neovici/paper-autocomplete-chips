@@ -41,14 +41,16 @@
 				height: 20px;
 			}
 		</style>
-		<paper-autocomplete id="ac" min-length="0" placeholder="Search" source="[[ items ]]" value="{{ _selection }}"
-				text-property="[[ textProperty ]]" value-property="" query-fn="[[ queryFn ]]"
+		<paper-autocomplete id="ac" min-length="0" placeholder="[[ placeholder ]]" source="[[ items ]]" value="{{ _selection }}"
+				text-property="[[ textProperty ]]" value-property="" query-fn="[[ queryFn ]]" min-length="[[ minLength ]]"
 				disable-show-clear text="{{ text }}">
+			<slot name="prefix" slot="prefix"></slot>
 			<div prefix slot="prefix" id="chips">
 				<template is="dom-repeat" items="[[ selectedItems ]]">
-						<div class="chip"><span>[[ _getChipText(item, textProperty) ]]</span><iron-icon icon="clear" on-tap="_clearItemSelection"></iron-icon></div>
-					</template>
-				</div>
+					<div class="chip"><span>[[ _getChipText(item, textProperty) ]]</span><iron-icon icon="clear" on-tap="_clearItemSelection"></iron-icon></div>
+				</template>
+			</div>
+			<slot name="suffix" slot="suffix"></slot>
 		</paper-autocomplete>
 	</template>
 
@@ -61,6 +63,16 @@
 			properties: {
 				items: {
 					type: Array
+				},
+
+				minLength: {
+					type: Number,
+					value: 0
+				},
+
+				placeholder: {
+					type: String,
+					value: 'Search'
 				},
 
 				queryFn: {
