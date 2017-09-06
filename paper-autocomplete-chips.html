@@ -20,7 +20,7 @@
 			.chip {
 				border-radius: 500px;
 				background-color: #e0e0e0;
-				margin-right: 4px;
+				margin: 1px 4px 1px 0;
 				white-space: nowrap;
 				overflow: hidden;
 				height: 28px;
@@ -44,9 +44,9 @@
 				height: 20px;
 			}
 		</style>
-		<paper-autocomplete id="ac" min-length="0" placeholder="[[ placeholder ]]" source="[[ items ]]" value="{{ _selection }}"
+		<paper-autocomplete id="ac" min-length="0" label="[[ placeholder ]]" source="[[ items ]]" value="{{ _selection }}"
 				text-property="[[ textProperty ]]" value-property="" query-fn="[[ queryFn ]]" min-length="[[ minLength ]]"
-				disable-show-clear text="{{ text }}">
+				disable-show-clear text="{{ text }}" always-float-label="[[ selectedItems.length ]]" placeholder="[[ _placeholder ]]">
 			<slot name="prefix" slot="prefix"></slot>
 			<div prefix slot="prefix" id="chips">
 				<template is="dom-repeat" items="[[ selectedItems ]]">
@@ -168,6 +168,11 @@
 					value: 'value'
 				},
 
+				_placeholder: {
+					type: String,
+					computed: '_computePlaceholder(selectedItems.length)'
+				},
+
 				_selection: {
 					type: Object,
 					observer: '_selectionChanged'
@@ -179,6 +184,10 @@
 				var item = event.model.item,
 					selectedIndex = this.selectedItems.indexOf(item);
 				this.splice('selectedItems', selectedIndex, 1);
+			},
+
+			_computePlaceholder: function (numSelected) {
+				return numSelected ? '…' : undefined;
 			},
 
 			_getMyItemText: function (item) {
