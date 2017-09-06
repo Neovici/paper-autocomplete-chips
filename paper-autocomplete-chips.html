@@ -23,14 +23,15 @@
 				margin: 1px 4px 1px 0;
 				white-space: nowrap;
 				overflow: hidden;
-				height: 28px;
 				@apply --layout-horizontal;
 				@apply --layout-center;
 			}
 			.chip > span {
 				color: #424242;
-				margin-left: 12px;
+				margin-left: 10px;
 				font-size: 13px;
+				overflow: hidden;
+				text-overflow: ellipsis;
 			}
 			.chip iron-icon {
 				margin: 2px 4px;
@@ -38,10 +39,10 @@
 				background-color: #a6a6a6;
 				border-radius: 500px;
 				cursor: pointer;
-				min-width: 20px;
-				width: 20px;
-				min-height: 20px;
-				height: 20px;
+				min-width: 16px;
+				width: 16px;
+				min-height: 16px;
+				height: 16px;
 			}
 		</style>
 		<paper-autocomplete id="ac" min-length="0" label="[[ placeholder ]]" source="[[ items ]]" value="{{ _selection }}"
