@@ -191,10 +191,6 @@
 				return numSelected ? '…' : undefined;
 			},
 
-			_getMyItemText: function (item) {
-				return 'mooop' + item.text;
-			},
-
 			_getChipText: function (item, textProperty) {
 				if (typeof item === 'object') {
 					return item[textProperty] || item.text;
