@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+	<head>
+		<title>paper-autocomplete-chips-basic</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="../../web-component-tester/browser.js"></script>
+		<script src="../../test-fixture/test-fixture-mocha.js"></script>
+
+		<link rel="import" href="../../test-fixture/test-fixture.html">
+		<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
+		<link rel="import" href="../paper-autocomplete-chips.html">
+	</head>
+	<body>
+		<test-fixture id="defaults">
+			<template>
+				<paper-autocomplete-chips></paper-autocomplete-chips>
+			</template>
+		</test-fixture>
+		<script>
+			suite('defaults', function () {
+				var chips;
+
+				setup(function (done){
+					chips = fixture('defaults');
+					Polymer.Base.async(function (){
+						done();
+					});
+				});
+
+				test('instantiates a paper-autocomplete-chips instance', function (done){
+					assert.equal(chips.is, 'paper-autocomplete-chips');
+					done();
+				});
+			});
+		</script>
+	</body>
+</html>
