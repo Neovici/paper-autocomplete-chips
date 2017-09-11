@@ -24,8 +24,6 @@
 				width: 24px;
 			}
 		</style>
-		<style>
-		</style>
 	</head>
 	<body>
 		<!-- multi selection selected items -->
@@ -36,12 +34,12 @@
 						id="t1"
 						text-property="label"
 						placeholder="Search">
-                    </paper-autocomplete-chips>
-                    <paper-autocomplete-chips
-                    id="t2"
-                    multi-selection
-                    placeholder="Search">
-                </paper-autocomplete-chips>
+					</paper-autocomplete-chips>
+					<paper-autocomplete-chips
+						id="t2"
+						multi-selection
+						placeholder="Search">
+					</paper-autocomplete-chips>
 			</demo-snippet>
 		</div>
 
@@ -72,11 +70,11 @@
 					label: 'Black selection'
 				}];
 
-	document.querySelector('#t2').items = [
-		'Red',
-		'Green',
-		'Yellow'
-	];
+				document.querySelector('#t2').items = [
+					'Red',
+					'Green',
+					'Yellow'
+				];
 
 				t = new Array(11);
 				for (i = 1; i <= 10; i += 1) {
