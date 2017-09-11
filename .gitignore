@@ -1,5 +1,7 @@
 bower_components/
 bower_components-1.x/
+bower_components-resolutions/
+bower-resolutions.json
 bower-1.x.json
 node_modules/
 debug.log
