@@ -21,6 +21,15 @@ limitations under the License.
 
 <link rel="import" href="../paper-autocomplete/paper-autocomplete.html">
 
+<!--
+`paper-autocomplete-chips` is a multi-selection autocomplete element.
+
+	<paper-autocomplete-chips label="Search" items='["Red", "Blue", "Green", "Yellow"]'>
+	</paper-autocomplete-chips>
+
+@demo demo/index.html
+-->
+
 <dom-module id="paper-autocomplete-chips">
 	<template>
 		<style>
@@ -64,8 +73,17 @@ limitations under the License.
 				min-height: 16px;
 				height: 16px;
 			}
+			paper-autocomplete {
+				--suggestions-item: {
+					white-space: nowrap;
+				};
+				--paper-autocomplete-suggestions-wrapper: {
+					width: auto;
+					min-width: 100%;
+				}
+			}
 		</style>
-		<paper-autocomplete id="ac" min-length="0" label="[[ placeholder ]]" source="[[ items ]]" value="{{ _selection }}"
+		<paper-autocomplete id="ac" min-length="0" label="[[ label ]]" source="[[ source ]]" value="{{ _selection }}"
 				text-property="[[ textProperty ]]" value-property="" query-fn="[[ queryFn ]]" min-length="[[ minLength ]]"
 				disable-show-clear text="{{ text }}" always-float-label="[[ selectedItems.length ]]" placeholder="[[ _placeholder ]]">
 			<slot name="prefix" slot="prefix"></slot>
@@ -75,33 +93,42 @@ limitations under the License.
 				</template>
 			</div>
 			<slot name="suffix" slot="suffix"></slot>
+			<template slot="autocomplete-custom-template">
+				<paper-item id$="[[_getSuggestionId(index)]]" role="option" aria-selected="false" on-tap="_onSelect">
+					<div inner-h-t-m-l="[[item.html]]"></div>
+					<paper-ripple></paper-ripple>
+				</paper-item>
+			  </template>
 		</paper-autocomplete>
 	</template>
 
 	<script type="text/javascript">
 
-		/**
-		 * @demo demo/index.html
-		 */
 		Polymer({
 
 			is: 'paper-autocomplete-chips',
 
 			properties: {
-				items: {
-					type: Array
+		
+				/**
+				 * `<paper-autocomplete>`/`<paper-input>` `label`
+				 */
+				label: {
+					type: String,
+					value: 'Search'
 				},
 
+				/**
+				 * `<paper-autocomplete>` `minLength`
+				 */
 				minLength: {
 					type: Number,
 					value: 0
 				},
 
-				placeholder: {
-					type: String,
-					value: 'Search'
-				},
-
+				/**
+				 * `<paper-autocomplete>` `queryFn`
+				 */
 				queryFn: {
 					type: Function,
 					value: function () {
@@ -147,7 +174,7 @@ limitations under the License.
 								result = getResult(item, this.textProperty, this.valueProperty);
 
 								if (result.text.toLowerCase().indexOf(query) !== -1) {
-									result.text = result.text.replace(new RegExp('(' + query + ')', 'ig'), regexpResult);
+									result.html = result.text.replace(new RegExp('(' + query + ')', 'ig'), regexpResult);
 									results.push(result);
 								}
 
@@ -169,6 +196,9 @@ limitations under the License.
 					}
 				},
 
+				/**
+				 * Selected items from `source`
+				 */
 				selectedItems: {
 					type: Array,
 					notify: true,
@@ -176,27 +206,51 @@ limitations under the License.
 						return [];
 					}
 				},
+		
+				/**
+				 * `<paper-autocomplete>` `source`
+				 */
+				source: {
+					type: Array
+				},
 
+				/**
+				 * `<paper-autocomplete>` `text`
+				 */
 				text: {
 					type: String,
 					notify: true
 				},
 
+				/**
+				 * `<paper-autocomplete>` `textProperty`
+				 */
 				textProperty: {
 					type: String,
 					value: 'text'
 				},
 
+				/**
+				 * `source` item value property to store in `selectedItems`
+				 * if empty, use the whole object
+				 */
 				valueProperty: {
 					type: String,
 					value: 'value'
 				},
 
+				/**
+				 * `<paper-autocomplete>`/`<paper-input>` `placeholder`
+				 * Set to "..." when we have one or more selections
+				 */
 				_placeholder: {
 					type: String,
 					computed: '_computePlaceholder(selectedItems.length)'
 				},
 
+				/**
+				 * `<paper-autocomplete>` `value` receiever
+				 */
 				_selection: {
 					type: Object,
 					observer: '_selectionChanged'

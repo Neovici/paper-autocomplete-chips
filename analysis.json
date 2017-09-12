@@ -2,61 +2,22 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "",
+      "description": "`paper-autocomplete-chips` is a multi-selection autocomplete element.\n\n  <paper-autocomplete-chips label=\"Search\" items='[\"Red\", \"Blue\", \"Green\", \"Yellow\"]'>\n  </paper-autocomplete-chips>",
       "summary": "",
       "path": "paper-autocomplete-chips.html",
       "properties": [
         {
-          "name": "items",
-          "type": "Array",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 70,
-              "column": 4
-            },
-            "end": {
-              "line": 72,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          }
-        },
-        {
-          "name": "minLength",
-          "type": "number",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 74,
-              "column": 4
-            },
-            "end": {
-              "line": 77,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "defaultValue": "0"
-        },
-        {
-          "name": "placeholder",
+          "name": "label",
           "type": "string",
-          "description": "",
+          "description": "`<paper-autocomplete>`/`<paper-input>` `label`",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 79,
+              "line": 115,
               "column": 4
             },
             "end": {
-              "line": 82,
+              "line": 118,
               "column": 5
             }
           },
@@ -66,17 +27,37 @@
           "defaultValue": "\"Search\""
         },
         {
-          "name": "queryFn",
-          "type": "Function",
-          "description": "",
+          "name": "minLength",
+          "type": "number",
+          "description": "`<paper-autocomplete>` `minLength`",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 84,
+              "line": 123,
               "column": 4
             },
             "end": {
-              "line": 149,
+              "line": 126,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "0"
+        },
+        {
+          "name": "queryFn",
+          "type": "Function",
+          "description": "`<paper-autocomplete>` `queryFn`",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 131,
+              "column": 4
+            },
+            "end": {
+              "line": 198,
               "column": 5
             }
           },
@@ -87,15 +68,15 @@
         {
           "name": "selectedItems",
           "type": "Array",
-          "description": "",
+          "description": "Selected items from `source`",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 151,
+              "line": 203,
               "column": 4
             },
             "end": {
-              "line": 157,
+              "line": 209,
               "column": 5
             }
           },
@@ -107,17 +88,36 @@
           "defaultValue": "[]"
         },
         {
-          "name": "text",
-          "type": "string",
-          "description": "",
+          "name": "source",
+          "type": "Array",
+          "description": "`<paper-autocomplete>` `source`",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 159,
+              "line": 214,
               "column": 4
             },
             "end": {
-              "line": 162,
+              "line": 216,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "description": "`<paper-autocomplete>` `text`",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 221,
+              "column": 4
+            },
+            "end": {
+              "line": 224,
               "column": 5
             }
           },
@@ -130,15 +130,15 @@
         {
           "name": "textProperty",
           "type": "string",
-          "description": "",
+          "description": "`<paper-autocomplete>` `textProperty`",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 164,
+              "line": 229,
               "column": 4
             },
             "end": {
-              "line": 167,
+              "line": 232,
               "column": 5
             }
           },
@@ -150,15 +150,15 @@
         {
           "name": "valueProperty",
           "type": "string",
-          "description": "",
+          "description": "`source` item value property to store in `selectedItems`\nif empty, use the whole object",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 169,
+              "line": 238,
               "column": 4
             },
             "end": {
-              "line": 172,
+              "line": 241,
               "column": 5
             }
           },
@@ -170,15 +170,15 @@
         {
           "name": "_placeholder",
           "type": "string",
-          "description": "",
+          "description": "`<paper-autocomplete>`/`<paper-input>` `placeholder`\nSet to \"...\" when we have one or more selections",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 174,
+              "line": 247,
               "column": 4
             },
             "end": {
-              "line": 177,
+              "line": 250,
               "column": 5
             }
           },
@@ -191,15 +191,15 @@
         {
           "name": "_selection",
           "type": "Object",
-          "description": "",
+          "description": "`<paper-autocomplete>` `value` receiever",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 179,
+              "line": 255,
               "column": 4
             },
             "end": {
-              "line": 182,
+              "line": 258,
               "column": 5
             }
           },
@@ -217,11 +217,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 186,
+              "line": 262,
               "column": 3
             },
             "end": {
-              "line": 190,
+              "line": 266,
               "column": 4
             }
           },
@@ -241,11 +241,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 192,
+              "line": 268,
               "column": 3
             },
             "end": {
-              "line": 194,
+              "line": 270,
               "column": 4
             }
           },
@@ -262,11 +262,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 196,
+              "line": 272,
               "column": 3
             },
             "end": {
-              "line": 201,
+              "line": 277,
               "column": 4
             }
           },
@@ -286,11 +286,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 203,
+              "line": 279,
               "column": 3
             },
             "end": {
-              "line": 218,
+              "line": 294,
               "column": 4
             }
           },
@@ -312,11 +312,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 65,
+          "line": 106,
           "column": 10
         },
         "end": {
-          "line": 219,
+          "line": 295,
           "column": 3
         }
       },
@@ -324,47 +324,15 @@
       "superclass": "HTMLElement",
       "attributes": [
         {
-          "name": "items",
-          "description": "",
+          "name": "label",
+          "description": "`<paper-autocomplete>`/`<paper-input>` `label`",
           "sourceRange": {
             "start": {
-              "line": 70,
+              "line": 115,
               "column": 4
             },
             "end": {
-              "line": 72,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "Array"
-        },
-        {
-          "name": "min-length",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 74,
-              "column": 4
-            },
-            "end": {
-              "line": 77,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "number"
-        },
-        {
-          "name": "placeholder",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 79,
-              "column": 4
-            },
-            "end": {
-              "line": 82,
+              "line": 118,
               "column": 5
             }
           },
@@ -372,15 +340,31 @@
           "type": "string"
         },
         {
-          "name": "query-fn",
-          "description": "",
+          "name": "min-length",
+          "description": "`<paper-autocomplete>` `minLength`",
           "sourceRange": {
             "start": {
-              "line": 84,
+              "line": 123,
               "column": 4
             },
             "end": {
-              "line": 149,
+              "line": 126,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "number"
+        },
+        {
+          "name": "query-fn",
+          "description": "`<paper-autocomplete>` `queryFn`",
+          "sourceRange": {
+            "start": {
+              "line": 131,
+              "column": 4
+            },
+            "end": {
+              "line": 198,
               "column": 5
             }
           },
@@ -389,14 +373,30 @@
         },
         {
           "name": "selected-items",
-          "description": "",
+          "description": "Selected items from `source`",
           "sourceRange": {
             "start": {
-              "line": 151,
+              "line": 203,
               "column": 4
             },
             "end": {
-              "line": 157,
+              "line": 209,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Array"
+        },
+        {
+          "name": "source",
+          "description": "`<paper-autocomplete>` `source`",
+          "sourceRange": {
+            "start": {
+              "line": 214,
+              "column": 4
+            },
+            "end": {
+              "line": 216,
               "column": 5
             }
           },
@@ -405,14 +405,14 @@
         },
         {
           "name": "text",
-          "description": "",
+          "description": "`<paper-autocomplete>` `text`",
           "sourceRange": {
             "start": {
-              "line": 159,
+              "line": 221,
               "column": 4
             },
             "end": {
-              "line": 162,
+              "line": 224,
               "column": 5
             }
           },
@@ -421,14 +421,14 @@
         },
         {
           "name": "text-property",
-          "description": "",
+          "description": "`<paper-autocomplete>` `textProperty`",
           "sourceRange": {
             "start": {
-              "line": 164,
+              "line": 229,
               "column": 4
             },
             "end": {
-              "line": 167,
+              "line": 232,
               "column": 5
             }
           },
@@ -437,14 +437,14 @@
         },
         {
           "name": "value-property",
-          "description": "",
+          "description": "`source` item value property to store in `selectedItems`\nif empty, use the whole object",
           "sourceRange": {
             "start": {
-              "line": 169,
+              "line": 238,
               "column": 4
             },
             "end": {
-              "line": 172,
+              "line": 241,
               "column": 5
             }
           },
@@ -477,11 +477,11 @@
           "range": {
             "file": "paper-autocomplete-chips.html",
             "start": {
-              "line": 50,
+              "line": 88,
               "column": 3
             },
             "end": {
-              "line": 50,
+              "line": 88,
               "column": 44
             }
           }
@@ -492,11 +492,11 @@
           "range": {
             "file": "paper-autocomplete-chips.html",
             "start": {
-              "line": 56,
+              "line": 94,
               "column": 3
             },
             "end": {
-              "line": 56,
+              "line": 94,
               "column": 44
             }
           }

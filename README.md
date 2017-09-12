@@ -4,11 +4,11 @@
 
 # &lt;paper-autocomplete-chips&gt;
 
-`<paper-autocomplete-chips>` is a multi-selection chips version of paper-autocomplete.
+`<paper-autocomplete-chips>` is a multi-selection chips version of [paper-autocomplete](https://www.webcomponents.org/element/ellipticaljs/paper-autocomplete).
 
 <!--
 ```
-<custom-element-demo>
+<custom-element-demo height="400">
   <template>
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="paper-autocomplete-chips.html">
@@ -18,8 +18,8 @@
 ```
 -->
 ```html
-<paper-autocomplete-chips multi-selection placeholder="Search"
-  items='["Red", "Blue", "Green", "Yellow"]'>
+<paper-autocomplete-chips label="Select color"
+  source='["Red", "Blue", "Green", "Yellow"]'>
 </paper-autocomplete-chips>
 ```
 
