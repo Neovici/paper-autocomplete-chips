@@ -84,7 +84,7 @@ limitations under the License.
 			}
 		</style>
 		<paper-autocomplete id="ac" min-length="0" label="[[ label ]]" source="[[ source ]]" value="{{ _selection }}"
-				text-property="[[ textProperty ]]" value-property="" query-fn="[[ queryFn ]]" min-length="[[ minLength ]]"
+				text-property="[[ textProperty ]]" query-fn="[[ queryFn ]]" min-length="[[ minLength ]]"
 				disable-show-clear text="{{ text }}" always-float-label="[[ selectedItems.length ]]" placeholder="[[ _placeholder ]]">
 			<slot name="prefix" slot="prefix"></slot>
 			<div prefix slot="prefix" id="chips">
@@ -135,26 +135,27 @@ limitations under the License.
 						var me = this,
 							maxResults = 30,
 							regexpResult = '<b>$1</b>',
-							getResult = function (item, textProp, valueProp) {
-								var objText,
-									value;
-
+							getResult = (item, textProp) => {
 								if (typeof item === 'object') {
-									if (!valueProp) {
-										value = item;
-									} else {
-										value = item[valueProp];
-									}
 									return {
 										text: item[textProp],
-										value: value
+										value: item
 									};
 								}
-								objText = item.toString();
+								var objText = item.toString();
 								return {
 									text: objText,
 									value: objText
 								};
+							},
+							hasOtherObjectValue = value => {
+								var prop = value[me.valueProperty];
+								if (prop === undefined || prop === null) {
+									return;
+								}
+								return me.selectedItems.some(
+									item => item[me.valueProperty] === prop
+								);
 							};
 
 						return function (datasource, query) {
@@ -171,12 +172,18 @@ limitations under the License.
 									continue;
 								}
 
-								result = getResult(item, this.textProperty, this.valueProperty);
+								result = getResult(item, this.textProperty);
 
-								if (result.text.toLowerCase().indexOf(query) !== -1) {
-									result.html = result.text.replace(new RegExp('(' + query + ')', 'ig'), regexpResult);
-									results.push(result);
+								if (me.valueProperty && hasOtherObjectValue(result.value)) {
+									continue;
 								}
+
+								if (result.text.toLowerCase().indexOf(query) === -1) {
+									continue;
+								}
+		
+								result.html = result.text.replace(new RegExp('(' + query + ')', 'ig'), regexpResult);
+								results.push(result);
 
 								if (results.length >= maxResults) {
 									break;
@@ -211,7 +218,8 @@ limitations under the License.
 				 * `<paper-autocomplete>` `source`
 				 */
 				source: {
-					type: Array
+					type: Array,
+					observer: '_sourceChanged'
 				},
 
 				/**
@@ -289,6 +297,20 @@ limitations under the License.
 							value: ''
 						}
 					});
+				});
+			},
+
+			_sourceChanged(newSource) {
+				if (!Array.isArray(newSource) || newSource.length === 0 || this.text.length < this.minLength) {
+					return;
+				}
+				if (!this.$.ac.$.autocompleteInput.focused) {
+					return;
+				}
+				this.$.ac.$.paperAutocompleteSuggestions._handleSuggestions({
+					target: {
+						value: this.text
+					}
 				});
 			}
 		});
