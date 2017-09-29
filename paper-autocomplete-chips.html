@@ -18,8 +18,9 @@ limitations under the License.
 <link rel="import" href="../polymer/polymer.html">
 
 <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
-
 <link rel="import" href="../paper-autocomplete/paper-autocomplete.html">
+<link rel="import" href="../paper-item/paper-item.html">
+<link rel="import" href="../paper-ripple/paper-ripple.html">
 
 <!--
 `paper-autocomplete-chips` is a multi-selection autocomplete element.
@@ -91,7 +92,7 @@ limitations under the License.
 		</div>
 		<paper-autocomplete id="ac" min-length="0" label="[[ label ]]" source="[[ source ]]" value="{{ _selection }}"
 				text-property="[[ textProperty ]]" query-fn="[[ queryFn ]]" min-length="[[ minLength ]]"
-				disable-show-clear text="{{ text }}" no-label-float>
+				disable-show-clear text="{{ text }}" no-label-float show-results-on-focus="[[ showResultsOnFocus]]">
 			<slot name="prefix" slot="prefix"></slot>
 			<slot name="suffix" slot="suffix"></slot>
 			<template slot="autocomplete-custom-template">
@@ -110,7 +111,7 @@ limitations under the License.
 			is: 'paper-autocomplete-chips',
 
 			properties: {
-		
+
 				/**
 				 * `<paper-autocomplete>`/`<paper-input>` `label`
 				 */
@@ -125,6 +126,14 @@ limitations under the License.
 				minLength: {
 					type: Number,
 					value: 0
+				},
+
+				/**
+				 * Set to `true` to show available suggestions on focus. This overrides the default behavior that only shows
+				 * notifications after user types.
+    		     */
+				showResultsOnFocus: {
+					type: Boolean
 				},
 
 				/**
@@ -182,7 +191,7 @@ limitations under the License.
 								if (result.text.toLowerCase().indexOf(query) === -1) {
 									continue;
 								}
-		
+
 								result.html = result.text.replace(new RegExp('(' + query + ')', 'ig'), regexpResult);
 								results.push(result);
 
@@ -214,7 +223,7 @@ limitations under the License.
 						return [];
 					}
 				},
-		
+
 				/**
 				 * `<paper-autocomplete>` `source`
 				 */
