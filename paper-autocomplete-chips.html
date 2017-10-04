@@ -87,7 +87,7 @@ limitations under the License.
 		</style>
 		<div id="chips">
 			<template is="dom-repeat" items="[[ selectedItems ]]">
-				<div class="chip"><span>[[ _getChipText(item, textProperty) ]]</span><iron-icon icon="clear" on-tap="_clearItemSelection"></iron-icon></div>
+				<div class="chip"><span>[[ _getChipText(item, textProperty) ]]</span><iron-icon icon="clear" on-click="_clearItemSelection"></iron-icon></div>
 			</template>
 		</div>
 		<paper-autocomplete id="ac" min-length="0" label="[[ label ]]" source="[[ source ]]" value="{{ _selection }}"
@@ -270,7 +270,13 @@ limitations under the License.
 			_clearItemSelection: function (event, detail) {
 				var item = event.model.item,
 					selectedIndex = this.selectedItems.indexOf(item);
+
+				// This will remove from the DOM the source element of the processed event ...
 				this.splice('selectedItems', selectedIndex, 1);
+				// ... so we must prevent further propagation of this event, because its source is now invalid.
+				// (This has caused troubles in app-drawer-layout click event handler).
+				event.preventDefault();
+				event.stopPropagation();
 			},
 
 			_getChipText: function (item, textProperty) {
