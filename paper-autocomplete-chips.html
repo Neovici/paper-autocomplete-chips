@@ -148,41 +148,38 @@ limitations under the License.
 							getResult = (item, textProp) => {
 								if (typeof item === 'object') {
 									return {
-										text: item[textProp],
+										text: this.get(textProp, item),
 										value: item
 									};
 								}
-								var objText = item.toString();
+								const objText = item.toString();
 								return {
 									text: objText,
 									value: objText
 								};
 							},
 							hasOtherObjectValue = value => {
-								var prop = value[me.valueProperty];
-								if (prop === undefined || prop === null) {
+								const prop = this.get(me.valueProperty, value);
+								if (prop == null) {
 									return;
 								}
 								return me.selectedItems.some(
-									item => item[me.valueProperty] === prop
+									item => this.get(me.valueProperty, item) === prop
 								);
 							};
 
 						return function (datasource, query) {
-							var i,
-								item,
-								result,
-								results = [];
+							const results = [];
 
-							for (i = 0; i < datasource.length; i += 1) {
-								item = datasource[i];
+							for (let i = 0; i < datasource.length; i += 1) {
+								const item = datasource[i];
 
 								// already selected
 								if (me.selectedItems.indexOf(item) !== -1) {
 									continue;
 								}
 
-								result = getResult(item, this.textProperty);
+								const result = getResult(item, this.textProperty);
 
 								if (me.valueProperty && hasOtherObjectValue(result.value)) {
 									continue;
@@ -281,7 +278,7 @@ limitations under the License.
 
 			_getChipText: function (item, textProperty) {
 				if (typeof item === 'object') {
-					return item[textProperty] || item.text;
+					return this.get(textProperty, item) || item.text;
 				}
 				return item;
 			},
@@ -304,7 +301,7 @@ limitations under the License.
 			},
 
 			_sourceChanged(newSource) {
-				if (!Array.isArray(newSource) || newSource.length === 0 || this.text.length < this.minLength) {
+				if (!Array.isArray(newSource) || newSource.length === 0 || this.text == null || this.text.length < this.minLength) {
 					return;
 				}
 				if (!this.$.ac.$.autocompleteInput.focused) {
