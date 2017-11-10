@@ -23,14 +23,14 @@
 			suite('defaults', function () {
 				var chips;
 
-				setup(function (done){
+				setup(function (done) {
 					chips = fixture('defaults');
-					Polymer.Base.async(function (){
+					Polymer.Base.async(function () {
 						done();
 					});
 				});
 
-				test('instantiates a paper-autocomplete-chips instance', function (done){
+				test('instantiates a paper-autocomplete-chips instance', function (done) {
 					assert.equal(chips.is, 'paper-autocomplete-chips');
 					done();
 				});

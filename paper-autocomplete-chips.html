@@ -179,7 +179,7 @@ limitations under the License.
 									continue;
 								}
 
-								const result = getResult(item, this.textProperty);
+								let result = getResult(item, this.textProperty);
 
 								if (me.valueProperty && hasOtherObjectValue(result.value)) {
 									continue;
