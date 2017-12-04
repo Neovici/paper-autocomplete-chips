@@ -30,7 +30,9 @@
 		"iron-demo-helpers": "PolymerElements/iron-demo-helpers#1 - 2",
 		"iron-test-helpers": "PolymerElements/iron-test-helpers#1 - 2",
 		"web-component-tester": "^6.0.0",
-		"webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
+    "paper-dialog": "^2.0.0",
+    "paper-dialog-scrollable": "^2.1.0"
 	},
 	"variants": {
 		"1.x": {

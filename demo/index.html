@@ -13,7 +13,10 @@
 		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
 		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
 		<link rel="import" href="../paper-autocomplete-chips.html">
-
+		
+		<link rel="import" href="../../paper-dialog/paper-dialog.html">
+		<link rel="import" href="../../paper-dialog-scrollable/paper-dialog-scrollable.html">
+		
 		<style is="custom-style" include="demo-pages-shared-styles">
 			div {
 				max-width: 1200px !important;
@@ -22,6 +25,9 @@
 				background-color: red;
 				min-width: 24px;
 				width: 24px;
+			}
+			#t2 {
+				width: 300px;
 			}
 		</style>
 	</head>
@@ -39,6 +45,16 @@
 						id="t2"
 						label="Search 2">
 					</paper-autocomplete-chips>
+					<button onclick="dialog.open()">Open Dialog</button>
+					<paper-dialog id="dialog">
+						<h2>Dialog</h2>
+						<paper-dialog-scrollable>
+							<paper-autocomplete-chips show-results-on-focus
+								id="t3"
+								label="Search 3">
+							</paper-autocomplete-chips>
+						</paper-dialog-scrollable>
+					</paper-dialog>
 			</demo-snippet>
 		</div>
 
@@ -73,6 +89,13 @@
 					'Red',
 					'Green',
 					'Yellow'
+				];
+
+				document.querySelector('#t3').source = [
+					'Red',
+					'Green',
+					'Yellow',
+					'Black'
 				];
 
 				t = new Array(11);
