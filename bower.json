@@ -23,8 +23,7 @@
 	"dependencies": {
 		"polymer": "Polymer/polymer#1.9 - 2",
 		"paper-autocomplete": "^3.2.0",
-		"iron-icon": "PolymerElements/iron-icon#1 - 2",
-		"iron-resizable-behavior": "^2.0.1"
+		"iron-icon": "PolymerElements/iron-icon#1 - 2"
 	},
 	"devDependencies": {
 		"iron-component-page": "PolymerElements/iron-component-page#1 - 3",
