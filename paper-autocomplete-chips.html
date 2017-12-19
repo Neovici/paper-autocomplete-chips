@@ -93,7 +93,8 @@ limitations under the License.
 				};
 				--paper-autocomplete-suggestions-wrapper: {
 					position: var(--paper-autocomplete-chips-suggestions-position, absolute);
-					width: var(--paper-autocomplete-chips-suggestions-width);
+					width: var(--paper-autocomplete-chips-suggestions-width, auto);
+					min-width: var(--paper-autocomplete-chips-suggestions-min-width, 100%);
 					@apply --paper-autocomplete-chips-suggestions;
 				};
 			}
