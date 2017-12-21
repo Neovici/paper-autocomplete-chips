@@ -28,6 +28,18 @@ limitations under the License.
 	<paper-autocomplete-chips label="Search" items='["Red", "Blue", "Green", "Yellow"]'>
 	</paper-autocomplete-chips>
 
+
+  ### Styling
+
+  `<paper-autocomplete-chips>` provides the following custom properties and mixins
+  for styling:
+
+  Custom property | Description | Default
+  ----------------|-------------|----------
+  `--paper-autocomplete-chips-suggestions` | mixin to apply to the suggestions container | `{}`
+  `--paper-autocomplete-chips-suggestions-width` | width of the suggestions container |
+  `--paper-autocomplete-chips-suggestions-position` | position of the suggestions container | `absolute`
+
 @demo demo/index.html
 -->
 
@@ -80,9 +92,11 @@ limitations under the License.
 					white-space: nowrap;
 				};
 				--paper-autocomplete-suggestions-wrapper: {
-					width: auto;
-					min-width: 100%;
-				}
+					position: var(--paper-autocomplete-chips-suggestions-position, absolute);
+					width: var(--paper-autocomplete-chips-suggestions-width, auto);
+					min-width: var(--paper-autocomplete-chips-suggestions-min-width, 100%);
+					@apply --paper-autocomplete-chips-suggestions;
+				};
 			}
 		</style>
 		<div id="chips">
@@ -264,7 +278,7 @@ limitations under the License.
 
 			},
 
-			_clearItemSelection: function (event, detail) {
+			_clearItemSelection: function (event) {
 				var item = event.model.item,
 					selectedIndex = this.selectedItems.indexOf(item);
 
