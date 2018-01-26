@@ -27,7 +27,7 @@
 			
 				const select = value => {
 						// Set input value
-						ac.text = value;
+						ac.text = value.toString();
 						// Trigger create suggestions
 						sug._input.fire('keyup');
 						// Select first result
@@ -35,7 +35,7 @@
 					},
 			
 					selectObj = obj => {
-						select(chips.get(chips.textProperty, obj).toString());
+						select(chips.get(chips.textProperty, obj));
 					};
 
 				setup(function (done) {
