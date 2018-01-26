@@ -162,7 +162,7 @@ limitations under the License.
 							getResult = (item, textProp) => {
 								if (typeof item === 'object') {
 									return {
-										text: this.get(textProp, item),
+										text: this.get(textProp, item).toString(),
 										value: item
 									};
 								}
