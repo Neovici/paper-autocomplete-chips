@@ -269,6 +269,15 @@ limitations under the License.
 				},
 
 				/**
+				 * `source` item value property to store in `selectedItems`
+				 * if empty, use the whole object
+				 */
+				disabled: {
+					type: Boolean,
+					observer: '_disabledChanged'
+				},
+
+				/**
 				 * `<paper-autocomplete>` `value` receiever
 				 */
 				_selection: {
@@ -276,6 +285,16 @@ limitations under the License.
 					observer: '_selectionChanged'
 				}
 
+			},
+
+			_disabledChanged(disabled) {
+				// paper-autocomplete does not expose the `disabled` property
+				// even though it's bound to it's input element.
+				if (disabled) {
+					this.$.ac.disable();
+					return;
+				}
+				this.$.ac.enable();
 			},
 
 			_clearItemSelection: function (event) {
