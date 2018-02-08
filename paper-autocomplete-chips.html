@@ -106,7 +106,8 @@ limitations under the License.
 		</div>
 		<paper-autocomplete id="ac" min-length="0" label="[[ label ]]" source="[[ source ]]" value="{{ _selection }}"
 				text-property="[[ textProperty ]]" query-fn="[[ queryFn ]]" min-length="[[ minLength ]]"
-				disable-show-clear text="{{ text }}" no-label-float show-results-on-focus="[[ showResultsOnFocus]]" disabled="[[disabled]]">
+				disable-show-clear text="{{ text }}" no-label-float show-results-on-focus="[[ showResultsOnFocus ]]"
+				focused="{{ focused }}" disabled="[[ disabled ]]">
 			<slot name="prefix" slot="prefix"></slot>
 			<slot name="suffix" slot="suffix"></slot>
 			<template slot="autocomplete-custom-template">
@@ -266,6 +267,14 @@ limitations under the License.
 				valueProperty: {
 					type: String,
 					value: 'value'
+				},
+
+				/**
+				 * `focused` If true, the element currently has focus.
+				 */
+				focused: {
+					type: Boolean,
+					notify: true
 				},
 
 				/**
