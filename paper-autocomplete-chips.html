@@ -198,8 +198,8 @@ limitations under the License.
 								if (me.valueProperty && hasOtherObjectValue(result.value)) {
 									continue;
 								}
-
-								if (result.text.toLowerCase().indexOf(query) === -1) {
+								result.idx = result.text.toLowerCase().indexOf(query);
+								if (result.idx === -1) {
 									continue;
 								}
 
@@ -210,8 +210,13 @@ limitations under the License.
 									break;
 								}
 							}
-
 							return results.sort(function (a, b) {
+								if (a.idx < b.idx) {
+									return -1;
+								}
+								if (a.idx > b.idx) {
+									return 1;
+								}
 								if (a.text < b.text) {
 									return -1;
 								}
