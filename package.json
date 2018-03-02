@@ -10,7 +10,8 @@
 		"eslint": "^3.9.1",
 		"eslint-plugin-html": "^3.2.1",
 		"eslint-plugin-mocha": "^4.11.0",
-		"polymer-cli": "^1.5.4"
+		"polymer-cli": "^1.5.4",
+		"web-component-tester-istanbul": "https://github.com/AnguloHerrera/web-component-tester-istanbul.git#master"
 	},
 	"scripts": {
 		"start": "polymer serve -o",
