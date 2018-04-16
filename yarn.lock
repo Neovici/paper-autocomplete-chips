@@ -4844,7 +4844,7 @@ polymer-bundler@^3.1.1:
     polymer-analyzer "^2.3.0"
     source-map "^0.5.6"
 
-polymer-cli@^1.5.4:
+polymer-cli@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/polymer-cli/-/polymer-cli-1.6.0.tgz#b85f28a584fc1299fd7dac1fd9232a6ac6ba35b9"
   dependencies:
@@ -6522,9 +6522,9 @@ wd@^1.2.0:
     underscore.string "3.3.4"
     vargs "0.1.0"
 
-"web-component-tester-istanbul@https://github.com/AnguloHerrera/web-component-tester-istanbul.git#master":
+web-component-tester-istanbul@Neovici/web-component-tester-istanbul:
   version "1.0.0"
-  resolved "https://github.com/AnguloHerrera/web-component-tester-istanbul.git#5fbf2d5e20013cda09f66c8b0bf8d9e4e4ed9c40"
+  resolved "https://codeload.github.com/Neovici/web-component-tester-istanbul/tar.gz/52093bde2ae673a16f606e2c36cd16f253e516fc"
   dependencies:
     express "^4.15.3"
     html-script-hook "^1.0.0"
