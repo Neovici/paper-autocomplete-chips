@@ -6,3 +6,4 @@ coverage/
 yarn-error.log
 debug.log
 .eslintcache
+.DS_Store
