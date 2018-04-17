@@ -20,39 +20,40 @@
 			</template>
 		</test-fixture>
 		<script>
-			suite('defaults', function () {
+
+			suite('defaults', () => {
 				let chips,
-					ac,
-					sug;
-			
+					autocomplete,
+					suggestions;
+
 				const select = value => {
 						// Set input value
-						ac.text = value.toString();
+						autocomplete.text = value.toString();
 						// Trigger create suggestions
-						sug._input.fire('keyup');
+						suggestions._input.fire('keyup');
 						// Select first result
-						sug._selection(0);
+						suggestions._selection(0);
 					},
-			
+
 					selectObj = obj => {
 						select(chips.get(chips.textProperty, obj));
 					};
 
-				setup(function (done) {
+				setup(done => {
 					chips = fixture('defaults');
-					ac = chips.$.ac;
-					sug = ac.$.paperAutocompleteSuggestions;
-					Polymer.Base.async(function () {
+					autocomplete = chips.$.ac;
+					suggestions = autocomplete.$.paperAutocompleteSuggestions;
+					Polymer.Base.async(() => {
 						done();
 					});
 				});
 
-				test('instantiates a paper-autocomplete-chips instance', function (done) {
+				test('Instantiates a paper-autocomplete-chips instance', done => {
 					assert.equal(chips.is, 'paper-autocomplete-chips');
 					done();
 				});
 
-				test('Selecting string source', function (done) {
+				test('Selecting string source', done => {
 					chips.source = ['A', 'B', 'C'];
 
 					select('A');
@@ -64,7 +65,7 @@
 					done();
 				});
 
-				test('Selecting integer source', function (done) {
+				test('Selecting integer source', done => {
 					chips.source = [1, 2, 3];
 
 					select('3');
@@ -72,11 +73,10 @@
 
 					select('1');
 					assert.deepEqual(chips.selectedItems, ['3', '1']);
-
 					done();
 				});
 
-				test('Selecting object source', function (done) {
+				test('Selecting object source', done => {
 					chips.source = [
 						{value: 1, label: 'One'},
 						{value: 2, label: 'Two'},
@@ -95,7 +95,7 @@
 					done();
 				});
 
-				test('Selecting object source with integer label', function (done) {
+				test('Selecting object source with integer label', done => {
 					chips.source = [
 						{value: 1, label: 1},
 						{value: 2, label: 2},
@@ -112,6 +112,27 @@
 					assert.deepEqual(chips.selectedItems, [chips.source[1], chips.source[3]]);
 
 					done();
+				});
+
+				test('Source changed updates suggestions list', done => {
+					chips.textProperty = 'label';
+					autocomplete.text = 'a';
+
+					Polymer.Base.async(() => {
+						assert.equal(suggestions._suggestions.length, 3);
+						done();
+					}, 200);
+
+					suggestions._input.fire('focus', {});
+
+					chips.source = [
+						{value: 0, label: 'ab'},
+						{value: 1, label: 'ac'},
+						{value: 2, label: 'ad'},
+						{value: 3, label: 'ef'},
+						{value: 4, label: 'gh'},
+						{value: 5, label: 'ji'},
+					];
 				});
 			});
 		</script>

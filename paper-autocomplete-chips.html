@@ -245,8 +245,7 @@ limitations under the License.
 				 * `<paper-autocomplete>` `source`
 				 */
 				source: {
-					type: Array,
-					observer: '_sourceChanged'
+					type: Array
 				},
 
 				/**
@@ -332,20 +331,6 @@ limitations under the License.
 							value: ''
 						}
 					});
-				});
-			},
-
-			_sourceChanged(newSource) {
-				if (!Array.isArray(newSource) || newSource.length === 0 || this.text == null || this.text.length < this.minLength) {
-					return;
-				}
-				if (!this.$.ac.$.autocompleteInput.focused) {
-					return;
-				}
-				this.$.ac.$.paperAutocompleteSuggestions._handleSuggestions({
-					target: {
-						value: this.text
-					}
 				});
 			}
 		});
