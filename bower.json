@@ -1,7 +1,6 @@
 {
 	"name": "paper-autocomplete-chips",
 	"main": "paper-autocomplete-chips.html",
-	"version": "1.0.2",
 	"homepage": "https://github.com/Neovici/paper-autocomplete-chips",
 	"authors": [
 		"Neovici Development"
