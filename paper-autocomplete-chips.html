@@ -107,7 +107,7 @@ limitations under the License.
 		<paper-autocomplete id="ac" min-length="0" label="[[ label ]]" source="[[ source ]]" value="{{ _selection }}"
 				text-property="[[ textProperty ]]" query-fn="[[ queryFn ]]" min-length="[[ minLength ]]"
 				disable-show-clear text="{{ text }}" no-label-float show-results-on-focus="[[ showResultsOnFocus ]]"
-				focused="{{ focused }}" disabled="[[ disabled ]]">
+				focused="{{ focused }}" disabled="[[ disabled ]]" required="[[ _acRequired ]]">
 			<slot name="prefix" slot="prefix"></slot>
 			<slot name="suffix" slot="suffix"></slot>
 			<template slot="autocomplete-custom-template">
@@ -136,11 +136,27 @@ limitations under the License.
 				},
 
 				/**
+				 * `<paper-autocomplete>` `required`
+				 */
+				_acRequired: {
+					type: Boolean,
+					value: false
+				},
+
+				/**
 				 * `<paper-autocomplete>` `minLength`
 				 */
 				minLength: {
 					type: Number,
 					value: 0
+				},
+
+				/**
+				 * `required` state for the component
+				 */
+				required: {
+					type: Boolean,
+					value: false
 				},
 
 				/**
@@ -298,6 +314,10 @@ limitations under the License.
 
 			},
 
+			observers: [
+				'selectedItemsObserver(selectedItems.*)'
+			],
+
 			_clearItemSelection: function (event) {
 				var item = event.model.item,
 					selectedIndex = this.selectedItems.indexOf(item);
@@ -332,6 +352,15 @@ limitations under the License.
 						}
 					});
 				});
+			},
+
+			selectedItemsObserver(selectedItemsNotify) {
+				this.set('_acRequired', this.required && selectedItemsNotify.base.length < 1);
+			},
+
+			validate() {
+				this.$.ac.validate();
+				return false;
 			}
 		});
 	</script>
