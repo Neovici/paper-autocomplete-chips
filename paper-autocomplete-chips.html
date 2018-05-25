@@ -318,7 +318,7 @@ limitations under the License.
 				'selectedItemsObserver(selectedItems.*)'
 			],
 
-			_clearItemSelection: function (event) {
+			_clearItemSelection(event) {
 				var item = event.model.item,
 					selectedIndex = this.selectedItems.indexOf(item);
 
@@ -330,14 +330,14 @@ limitations under the License.
 				event.stopPropagation();
 			},
 
-			_getChipText: function (item, textProperty) {
+			_getChipText(item, textProperty) {
 				if (typeof item === 'object') {
 					return this.get(textProperty, item) || item.text;
 				}
 				return item;
 			},
 
-			_selectionChanged: function (newSelection) {
+			_selectionChanged(newSelection) {
 				if (newSelection === null) {
 					return;
 				}
