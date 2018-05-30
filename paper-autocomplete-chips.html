@@ -21,6 +21,7 @@ limitations under the License.
 <link rel="import" href="../paper-autocomplete/paper-autocomplete.html">
 <link rel="import" href="../paper-item/paper-item.html">
 <link rel="import" href="../paper-ripple/paper-ripple.html">
+<link rel="import" href="../cosmoz-i18next/cosmoz-i18next.html">
 
 <!--
 `paper-autocomplete-chips` is a multi-selection autocomplete element.
@@ -107,7 +108,7 @@ limitations under the License.
 		<paper-autocomplete id="ac" min-length="0" label="[[ label ]]" source="[[ source ]]" value="{{ _selection }}"
 				text-property="[[ textProperty ]]" query-fn="[[ queryFn ]]" min-length="[[ minLength ]]"
 				disable-show-clear text="{{ text }}" no-label-float show-results-on-focus="[[ showResultsOnFocus ]]"
-				focused="{{ focused }}" disabled="[[ disabled ]]" required="[[ _acRequired ]]">
+				focused="{{ focused }}" disabled="[[ disabled ]]" error-message="[[ errorMessage ]]" invalid="[[ acInvalid ]]">
 			<slot name="prefix" slot="prefix"></slot>
 			<slot name="suffix" slot="suffix"></slot>
 			<template slot="autocomplete-custom-template">
@@ -136,17 +137,41 @@ limitations under the License.
 				},
 
 				/**
-				 * `<paper-autocomplete>` `required`
+				 * `<paper-autocomplete>` `invalid`
 				 */
-				_acRequired: {
+				 _acInvalid: {
 					type: Boolean,
 					value: false
+				},
+
+
+				/**
+				* `errorMessage` The error message to display when the input is invalid.
+				*/
+				errorMessage: {
+					type: String
 				},
 
 				/**
 				 * `<paper-autocomplete>` `minLength`
 				 */
 				minLength: {
+					type: Number,
+					value: 0
+				},
+
+				/**
+				 * Minimum limit of selected items, set to 0 to disable.
+				 */
+				 minSelected: {
+					type: Number,
+					value: 0
+				},
+
+				/**
+				 * Maximum limit of selected items, set to 0 to disable.
+				 */
+				 maxSelected: {
 					type: Number,
 					value: 0
 				},
@@ -313,11 +338,9 @@ limitations under the License.
 				}
 
 			},
-
-			observers: [
-				'selectedItemsObserver(selectedItems.*)'
+			behaviors: [
+				Cosmoz.TranslatableBehavior
 			],
-
 			_clearItemSelection(event) {
 				var item = event.model.item,
 					selectedIndex = this.selectedItems.indexOf(item);
@@ -354,13 +377,28 @@ limitations under the License.
 				});
 			},
 
-			selectedItemsObserver(selectedItemsNotify) {
-				this.set('_acRequired', this.required && selectedItemsNotify.base.length < 1);
-			},
-
 			validate() {
-				return this.$.ac.validate();
-			}
+				if (this.required && !this.selectedItems.length) {
+					this.set('acInvalid', true);
+					this.set('errorMessage', this.gettext('Something must be selected in the list.'));
+					return false;
+				}
+
+				if (this.minSelected && this.minSelected > this.selectedItems.length) {
+					this.set('acInvalid', true);
+					this.set('errorMessage', this.gettext('Select at least {0} in the list.', this.minSelected));
+					return false;
+				}
+
+				if (this.maxSelected && this.maxSelected < this.selectedItems.length) {
+					this.set('acInvalid', true);
+					this.set('errorMessage', this.gettext('Select maximum {0} in the list.', this.maxSelected));
+					return false;
+				}
+
+				this.set('acInvalid', false);
+				this.set('errorMessage', '');
+				return true;			}
 		});
 	</script>
 </dom-module>
