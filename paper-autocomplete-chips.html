@@ -108,7 +108,7 @@ limitations under the License.
 		<paper-autocomplete id="ac" min-length="0" label="[[ label ]]" source="[[ source ]]" value="{{ _selection }}"
 				text-property="[[ textProperty ]]" query-fn="[[ queryFn ]]" min-length="[[ minLength ]]"
 				disable-show-clear text="{{ text }}" no-label-float show-results-on-focus="[[ showResultsOnFocus ]]"
-				focused="{{ focused }}" disabled="[[ disabled ]]" error-message="[[ errorMessage ]]" invalid="[[ acInvalid ]]">
+				focused="{{ focused }}" disabled="[[ disabled ]]" error-message="[[ errorMessage ]]" invalid="[[ _acInvalid ]]">
 			<slot name="prefix" slot="prefix"></slot>
 			<slot name="suffix" slot="suffix"></slot>
 			<template slot="autocomplete-custom-template">
@@ -139,7 +139,7 @@ limitations under the License.
 				/**
 				 * `<paper-autocomplete>` `invalid`
 				 */
-				 _acInvalid: {
+				_acInvalid: {
 					type: Boolean,
 					value: false
 				},
@@ -163,7 +163,7 @@ limitations under the License.
 				/**
 				 * Minimum limit of selected items, set to 0 to disable.
 				 */
-				 minSelected: {
+				 min: {
 					type: Number,
 					value: 0
 				},
@@ -171,7 +171,7 @@ limitations under the License.
 				/**
 				 * Maximum limit of selected items, set to 0 to disable.
 				 */
-				 maxSelected: {
+				 max: {
 					type: Number,
 					value: 0
 				},
@@ -378,27 +378,28 @@ limitations under the License.
 			},
 
 			validate() {
-				if (this.required && !this.selectedItems.length) {
-					this.set('acInvalid', true);
+				if (this.required && this.selectedItems.length === 0) {
+					this.set('_acInvalid', true);
 					this.set('errorMessage', this.gettext('Something must be selected in the list.'));
 					return false;
 				}
 
-				if (this.minSelected && this.minSelected > this.selectedItems.length) {
-					this.set('acInvalid', true);
-					this.set('errorMessage', this.gettext('Select at least {0} in the list.', this.minSelected));
+				if (this.min && this.min > this.selectedItems.length) {
+					this.set('_acInvalid', true);
+					this.set('errorMessage', this.gettext('Select at least {0} in the list.', this.min));
 					return false;
 				}
 
-				if (this.maxSelected && this.maxSelected < this.selectedItems.length) {
-					this.set('acInvalid', true);
-					this.set('errorMessage', this.gettext('Select maximum {0} in the list.', this.maxSelected));
+				if (this.max && this.max < this.selectedItems.length) {
+					this.set('_acInvalid', true);
+					this.set('errorMessage', this.gettext('Select maximum {0} in the list.', this.max));
 					return false;
 				}
 
-				this.set('acInvalid', false);
+				this.set('_acInvalid', false);
 				this.set('errorMessage', '');
-				return true;			}
+				return true;
+			}
 		});
 	</script>
 </dom-module>
