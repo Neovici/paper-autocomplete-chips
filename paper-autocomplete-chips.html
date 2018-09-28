@@ -203,8 +203,12 @@ limitations under the License.
 							regexpResult = '<b>$1</b>',
 							getResult = (item, textProp) => {
 								if (typeof item === 'object') {
+									let textValue = this.get(textProp, item);
+									if (textValue == null) {
+										return;
+									}
 									return {
-										text: this.get(textProp, item).toString(),
+										text: textValue.toString(),
 										value: item
 									};
 								}
@@ -236,6 +240,10 @@ limitations under the License.
 								}
 
 								let result = getResult(item, this.textProperty);
+
+								if (result == null) {
+									continue;
+								}
 
 								if (me.valueProperty && hasOtherObjectValue(result.value)) {
 									continue;
