@@ -240,7 +240,7 @@ limitations under the License.
 									continue;
 								}
 
-								let result = getResult(item, this.textProperty);
+								let result = getResult(item, me.textProperty);
 
 								if (result == null) {
 									continue;
@@ -398,11 +398,11 @@ limitations under the License.
 						value: ''
 					}
 				});
-			});
+			}.bind(this));
 		}
 		/**
 		 * Check whether the input is valid or not.
-		 * @returns {boolean}
+		 * @returns {boolean} Whether the input is valid or not.
 		 */
 		validate() {
 			if (this.required && this.selectedItems.length === 0) {
