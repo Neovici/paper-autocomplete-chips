@@ -35,11 +35,5 @@
 	"bugs": {
 		"url": "https://github.com/neovici/paper-autocomplete-chips/issues"
 	},
-	"homepage": "https://github.com/neovici/paper-autocomplete-chips#readme",
-	"dependencies": {
-		"cli": "^1.0.1",
-		"istanbul": "^0.4.5",
-		"ruby": "^0.6.1",
-		"travis": "^0.1.1"
-	}
+	"homepage": "https://github.com/neovici/paper-autocomplete-chips#readme"
 }
