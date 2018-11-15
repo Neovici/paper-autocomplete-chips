@@ -30,7 +30,7 @@
 						// Set input value
 						autocomplete.text = value.toString();
 						// Trigger create suggestions
-						suggestions._input.fire('keyup');
+						suggestions.dispatchEvent(new CustomEvent('keyup', { bubbles: true, composed: true }));
 						// Select first result
 						suggestions._selection(0);
 					},
@@ -118,7 +118,7 @@
 						done();
 					}, 200);
 
-					suggestions._input.fire('focus', {});
+					suggestions.dispatchEvent(new CustomEvent('focus', { bubbles: true, composed: true }));
 
 					chips.source = [
 						{value: 0, label: 'ab'},
