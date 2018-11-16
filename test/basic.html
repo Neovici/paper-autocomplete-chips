@@ -112,7 +112,7 @@
 					chips.textProperty = 'label';
 					autocomplete.text = 'a';
 
-					Polymer.Async.microTask.run(() => {
+					window.setTimeout(() => {
 						assert.equal(suggestions._suggestions.length, 3);
 						done();
 					}, 200);
