@@ -12,6 +12,7 @@
 		<link rel="import" href="../../test-fixture/test-fixture.html">
 		<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
 		<link rel="import" href="../paper-autocomplete-chips.html">
+		<link rel="import" href="/bower_components/polymer/lib/utils/async.html">
 	</head>
 	<body>
 		<test-fixture id="defaults">
@@ -30,7 +31,7 @@
 						// Set input value
 						autocomplete.text = value.toString();
 						// Trigger create suggestions
-						suggestions._input.fire('keyup');
+						suggestions._input.dispatchEvent(new CustomEvent('keyup', { bubbles: true, composed: true }));
 						// Select first result
 						suggestions._selection(0);
 					},
@@ -43,9 +44,7 @@
 					chips = fixture('defaults');
 					autocomplete = chips.$.ac;
 					suggestions = autocomplete.$.paperAutocompleteSuggestions;
-					Polymer.Base.async(() => {
-						done();
-					});
+					Polymer.Async.microTask.run(() => done());
 				});
 
 				test('Selecting string source', done => {
@@ -113,12 +112,12 @@
 					chips.textProperty = 'label';
 					autocomplete.text = 'a';
 
-					Polymer.Base.async(() => {
+					window.setTimeout(() => {
 						assert.equal(suggestions._suggestions.length, 3);
 						done();
 					}, 200);
 
-					suggestions._input.fire('focus', {});
+					suggestions._input.dispatchEvent(new CustomEvent('focus', { bubbles: true, composed: true }));
 
 					chips.source = [
 						{value: 0, label: 'ab'},

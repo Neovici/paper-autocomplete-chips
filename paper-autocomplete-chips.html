@@ -22,6 +22,7 @@ limitations under the License.
 <link rel="import" href="../paper-item/paper-item.html">
 <link rel="import" href="../paper-ripple/paper-ripple.html">
 <link rel="import" href="../cosmoz-i18next/cosmoz-i18next.html">
+<link rel="import" href="/bower_components/polymer/lib/utils/async.html">
 
 <!--
 `paper-autocomplete-chips` is a multi-selection autocomplete element.
@@ -348,9 +349,6 @@ limitations under the License.
 
 			};
 		}
-		constructor() {
-			super();
-		}
 		/**
 		 * Clear the selected items.
 		 * @param {object} event Polymer event object.
@@ -389,16 +387,15 @@ limitations under the License.
 				return;
 			}
 			this.push('selectedItems', newSelection);
-			this.async(function () {
+			Polymer.Async.microTask.run(() => {
 				this.$.ac.clear();
-
 				// FIXME
 				this.$.ac.$.paperAutocompleteSuggestions._handleSuggestions({
 					target: {
 						value: ''
 					}
 				});
-			}.bind(this));
+			});
 		}
 		/**
 		 * Check whether the input is valid or not.

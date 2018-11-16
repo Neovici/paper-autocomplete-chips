@@ -22,7 +22,7 @@
 	"dependencies": {
 		"polymer": "Polymer/polymer#^2.6.1",
 		"paper-autocomplete": "ellipticaljs/paper-autocomplete#^3.7.0",
-		"iron-icon": "PolymerElements/iron-icon#1 - 2",
+		"iron-icon": "PolymerElements/iron-icon#^2.1.0",
 		"cosmoz-i18next": "Neovici/cosmoz-i18next#^1.0.0"
 	},
 	"devDependencies": {
