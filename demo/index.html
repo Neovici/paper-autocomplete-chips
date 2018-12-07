@@ -62,6 +62,12 @@
 						<paper-autocomplete-chips show-results-on-focus
 							id="t3"
 							label="Search 3">
+							<template slot="autocomplete-custom-template">
+								<paper-item id$="[[ _getSuggestionId(index) ]]" role="option" aria-selected="false" on-tap="_onSelect">
+									☺&nbsp;<div inner-h-t-m-l="[[ item.html ]]"></div>
+									<paper-ripple></paper-ripple>
+								</paper-item>
+							</template>
 						</paper-autocomplete-chips>
 					</paper-dialog-scrollable>
 				</paper-dialog>

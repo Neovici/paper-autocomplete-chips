@@ -112,12 +112,14 @@ limitations under the License.
 				focused="{{ focused }}" disabled="[[ disabled ]]" error-message="[[ errorMessage ]]" invalid="[[ _acInvalid ]]">
 			<slot name="prefix" slot="prefix"></slot>
 			<slot name="suffix" slot="suffix"></slot>
-			<template slot="autocomplete-custom-template">
-				<paper-item id$="[[ _getSuggestionId(index) ]]" role="option" aria-selected="false" on-tap="_onSelect">
-					<div inner-h-t-m-l="[[ item.html ]]"></div>
-					<paper-ripple></paper-ripple>
-				</paper-item>
-			  </template>
+			<slot name="autocomplete-custom-template" slot="autocomplete-custom-template">
+				<template slot="autocomplete-custom-template">
+					<paper-item id$="[[ _getSuggestionId(index) ]]" role="option" aria-selected="false" on-tap="_onSelect">
+						<div inner-h-t-m-l="[[ item.html ]]"></div>
+						<paper-ripple></paper-ripple>
+					</paper-item>
+				</template>
+			</slot>
 		</paper-autocomplete>
 	</template>
 
