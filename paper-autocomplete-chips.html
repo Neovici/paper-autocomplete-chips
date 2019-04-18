@@ -255,7 +255,7 @@ limitations under the License.
 									continue;
 								}
 
-								result.html = result.text.replace(new RegExp('(' + query + ')', 'ig'), regexpResult);
+								result.html = result.text.replace(new RegExp('(' + query.replace(/[|\\{}()[\]^$+*?.-]/gu, '\\$&') + ')', 'ig'), regexpResult);
 								results.push(result);
 
 								if (results.length >= maxResults) {
