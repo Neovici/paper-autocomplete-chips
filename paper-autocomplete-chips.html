@@ -122,8 +122,8 @@ limitations under the License.
 	</template>
 
 	<script type="text/javascript">
-
-	class PaperAutocompleteChips extends Polymer.mixinBehaviors([Cosmoz.TranslatableBehavior], Polymer.Element) {
+	/*global Cosmoz*/
+	class PaperAutocompleteChips extends Cosmoz.Mixins.translatable(Polymer.Element) {
 		static get is() {
 			return 'paper-autocomplete-chips';
 		}
