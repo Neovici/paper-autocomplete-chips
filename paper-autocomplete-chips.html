@@ -386,7 +386,7 @@ limitations under the License.
 		 */
 		_getChipText(item, textProperty) {
 			let localItem = item;
-			if (typeof text === 'object') {
+			if (typeof localItem === 'object') {
 				localItem = this.get(textProperty, localItem) || localItem.text;
 			}
 			return localItem !== '' ? localItem : this.noValueLabel;
