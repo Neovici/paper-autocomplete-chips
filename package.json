@@ -2,36 +2,58 @@
 	"name": "paper-autocomplete-chips",
 	"version": "1.0.0",
 	"description": "[![Build Status](https://travis-ci.org/Neovici/paper-autocomplete-chips.svg?branch=master)](https://travis-ci.org/Neovici/paper-autocomplete-chips)",
-	"main": "index.js",
-	"directories": {
-		"test": "test"
-	},
-	"devDependencies": {
-		"eslint": "^3.9.1",
-		"eslint-plugin-html": "^3.2.1",
-		"eslint-plugin-mocha": "^4.11.0",
-		"polymer-cli": "^1.8.0",
-		"web-component-tester-istanbul": "Neovici/web-component-tester-istanbul"
-	},
-	"scripts": {
-		"start": "polymer serve -o",
-		"postinstall": "polymer install",
-		"lint": "eslint --cache --ext .js,.html . && polymer lint paper-*.html",
-		"test": "polymer test",
-		"analyze": "polymer analyze --input cosmoz-*.html  > analysis.json"
+	"keywords": [
+		"polymer",
+		"web-components"
+	],
+	"homepage": "https://github.com/neovici/paper-autocomplete-chips#readme",
+	"bugs": {
+		"url": "https://github.com/neovici/paper-autocomplete-chips/issues"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/neovici/paper-autocomplete-chips.git"
 	},
-	"keywords": [
-		"polymer",
-		"web-components"
-	],
-	"author": "",
 	"license": "Apache-2.0",
-	"bugs": {
-		"url": "https://github.com/neovici/paper-autocomplete-chips/issues"
+	"author": "Neovici Development",
+	"main": "paper-autocomplete-chips.js",
+	"directories": {
+		"test": "test"
 	},
-	"homepage": "https://github.com/neovici/paper-autocomplete-chips#readme"
+	"scripts": {
+		"analyze": "polymer analyze --input paper-*.js  > analysis.json",
+		"lint": "eslint --cache --ext .js,.html . && polymer lint paper-*.js",
+		"start": "polymer serve -o",
+		"test": "polymer test"
+	},
+	"dependencies": {
+		"@neovici/cosmoz-i18next": "neovici/cosmoz-i18next#semver:^3.0.0",
+		"@neovici/paper-autocomplete": "neovici/paper-autocomplete#semver:^4.0.0",
+		"@polymer/iron-flex-layout": "^3.0.1",
+		"@polymer/iron-icon": "^3.0.0",
+		"@polymer/paper-item": "^3.0.1",
+		"@polymer/paper-ripple": "^3.0.1",
+		"@polymer/polymer": "^3.0.0",
+		"@webcomponents/shadycss": "^1.9.1"
+	},
+	"devDependencies": {
+		"@neovici/eslint-config": "neovici/eslint-config#semver:^1.0.0",
+		"@polymer/iron-component-page": "^4.0.0",
+		"@polymer/iron-demo-helpers": "^3.0.0",
+		"@polymer/iron-test-helpers": "^3.0.0",
+		"@polymer/paper-dialog": "^3.0.0",
+		"@polymer/paper-dialog-scrollable": "^3.0.0",
+		"@polymer/test-fixture": "^4.0.2",
+		"@webcomponents/webcomponentsjs": "^2.0.0",
+		"babel-eslint": "^10.0.2",
+		"chai": "^4.2.0",
+		"eslint": "^5.0.0",
+		"eslint-plugin-html": "^5.0.0",
+		"eslint-plugin-import": "^2.17.3",
+		"eslint-plugin-mocha": "^5.0.0",
+		"mocha": "^5.0.0",
+		"polymer-cli": "^1.8.0",
+		"wct-istanbul": "^0.14.3",
+		"wct-mocha": "^1.0.0"
+	}
 }

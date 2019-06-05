@@ -5,14 +5,17 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-		<script src="../../web-component-tester/browser.js"></script>
-		<script src="../../test-fixture/test-fixture-mocha.js"></script>
+		<script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+		<script src="/components/mocha/mocha.js"></script>
+		<script src="/components/wct-mocha/wct-mocha.js"></script>
+		<script src="/components/chai/chai.js"></script>
+		<script src="/components/@polymer/test-fixture/test-fixture-mocha.js"></script>
 
-		<link rel="import" href="../../test-fixture/test-fixture.html">
-		<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
-		<link rel="import" href="../paper-autocomplete-chips.html">
-		<link rel="import" href="/bower_components/polymer/lib/utils/async.html">
+		<script type="module" src="/components/@polymer/test-fixture/test-fixture.js"></script>
+		<script type="module" src="/components/@polymer/iron-test-helpers/iron-test-helpers.js"></script>
+		<script type="module" src="/components/@polymer/polymer/lib/utils/async.js"></script>
+
+		<script type="module" src="../paper-autocomplete-chips.js"></script>
 	</head>
 	<body>
 		<test-fixture id="defaults">
@@ -20,7 +23,8 @@
 				<paper-autocomplete-chips></paper-autocomplete-chips>
 			</template>
 		</test-fixture>
-		<script>
+		<script type="module">
+			import { microTask } from '@polymer/polymer/lib/utils/async';
 
 			suite('defaults', () => {
 				let chips,
@@ -44,7 +48,7 @@
 					chips = fixture('defaults');
 					autocomplete = chips.$.ac;
 					suggestions = autocomplete.$.paperAutocompleteSuggestions;
-					Polymer.Async.microTask.run(() => done());
+					microTask.run(() => done());
 				});
 
 				test('Selecting string source', done => {
@@ -125,7 +129,7 @@
 						{value: 2, label: 'ad'},
 						{value: 3, label: 'ef'},
 						{value: 4, label: 'gh'},
-						{value: 5, label: 'ji'},
+						{value: 5, label: 'ji'}
 					];
 				});
 			});

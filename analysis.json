@@ -2,304 +2,857 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`paper-autocomplete-chips` is a multi-selection autocomplete element.\n\n  <paper-autocomplete-chips label=\"Search\" items='[\"Red\", \"Blue\", \"Green\", \"Yellow\"]'>\n  </paper-autocomplete-chips>",
+      "description": "`paper-autocomplete-chips` is a multi-selection autocomplete element.\n\n<paper-autocomplete-chips label=\"Search\" items='[\"Red\", \"Blue\", \"Green\", \"Yellow\"]'>\n</paper-autocomplete-chips>\n\n\n### Styling\n\n`<paper-autocomplete-chips>` provides the following custom properties and mixins\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--paper-autocomplete-chips-suggestions` | mixin to apply to the suggestions container | `{}`\n`--paper-autocomplete-chips-suggestions-width` | width of the suggestions container |\n`--paper-autocomplete-chips-suggestions-position` | position of the suggestions container | `absolute`",
       "summary": "",
-      "path": "paper-autocomplete-chips.html",
+      "path": "paper-autocomplete-chips.js",
       "properties": [
         {
+          "name": "t",
+          "type": "Object | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@neovici/cosmoz-i18next/cosmoz-i18next.js",
+            "start": {
+              "line": 21,
+              "column": 3
+            },
+            "end": {
+              "line": 26,
+              "column": 4
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          },
+          "inheritedFrom": "translatable"
+        },
+        {
           "name": "label",
-          "type": "string",
+          "type": "string | null | undefined",
           "description": "`<paper-autocomplete>`/`<paper-input>` `label`",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 115,
-              "column": 4
+              "line": 138,
+              "column": 3
             },
             "end": {
-              "line": 118,
-              "column": 5
+              "line": 141,
+              "column": 4
             }
           },
           "metadata": {
-            "polymer": {}
+            "polymer": {
+              "attributeType": "String"
+            }
           },
           "defaultValue": "\"Search\""
         },
         {
+          "name": "_acInvalid",
+          "type": "boolean | null | undefined",
+          "description": "`<paper-autocomplete>` `invalid`",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 146,
+              "column": 3
+            },
+            "end": {
+              "line": 149,
+              "column": 4
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "errorMessage",
+          "type": "string | null | undefined",
+          "description": "`errorMessage` The error message to display when the input is invalid.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 155,
+              "column": 3
+            },
+            "end": {
+              "line": 157,
+              "column": 4
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          }
+        },
+        {
           "name": "minLength",
-          "type": "number",
+          "type": "number | null | undefined",
           "description": "`<paper-autocomplete>` `minLength`",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 123,
-              "column": 4
+              "line": 162,
+              "column": 3
             },
             "end": {
-              "line": 126,
-              "column": 5
+              "line": 165,
+              "column": 4
             }
           },
           "metadata": {
-            "polymer": {}
+            "polymer": {
+              "attributeType": "Number"
+            }
           },
           "defaultValue": "0"
         },
         {
+          "name": "min",
+          "type": "number | null | undefined",
+          "description": "Minimum limit of selected items, set to 0 to disable.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 170,
+              "column": 3
+            },
+            "end": {
+              "line": 173,
+              "column": 4
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Number"
+            }
+          },
+          "defaultValue": "0"
+        },
+        {
+          "name": "max",
+          "type": "number | null | undefined",
+          "description": "Maximum limit of selected items, set to 0 to disable.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 178,
+              "column": 3
+            },
+            "end": {
+              "line": 181,
+              "column": 4
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Number"
+            }
+          },
+          "defaultValue": "0"
+        },
+        {
+          "name": "required",
+          "type": "boolean | null | undefined",
+          "description": "`required` state for the component",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 186,
+              "column": 3
+            },
+            "end": {
+              "line": 189,
+              "column": 4
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "showResultsOnFocus",
+          "type": "boolean | null | undefined",
+          "description": "Set to `true` to show available suggestions on focus. This overrides the default behavior that only shows\nnotifications after user types.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 195,
+              "column": 3
+            },
+            "end": {
+              "line": 197,
+              "column": 4
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          }
+        },
+        {
+          "name": "noValueLabel",
+          "type": "string | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 199,
+              "column": 3
+            },
+            "end": {
+              "line": 202,
+              "column": 4
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true,
+              "attributeType": "String"
+            }
+          }
+        },
+        {
           "name": "queryFn",
-          "type": "Function",
+          "type": "Function | null | undefined",
           "description": "`<paper-autocomplete>` `queryFn`",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 131,
-              "column": 4
+              "line": 207,
+              "column": 3
             },
             "end": {
-              "line": 198,
-              "column": 5
+              "line": 289,
+              "column": 4
             }
           },
           "metadata": {
-            "polymer": {}
+            "polymer": {
+              "attributeType": "Function"
+            }
           }
         },
         {
           "name": "selectedItems",
-          "type": "Array",
+          "type": "Array | null | undefined",
           "description": "Selected items from `source`",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 203,
-              "column": 4
+              "line": 294,
+              "column": 3
             },
             "end": {
-              "line": 209,
-              "column": 5
+              "line": 300,
+              "column": 4
             }
           },
           "metadata": {
             "polymer": {
-              "notify": true
+              "notify": true,
+              "attributeType": "Array"
             }
-          },
-          "defaultValue": "[]"
+          }
         },
         {
           "name": "source",
-          "type": "Array",
+          "type": "Array | null | undefined",
           "description": "`<paper-autocomplete>` `source`",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 214,
-              "column": 4
+              "line": 305,
+              "column": 3
             },
             "end": {
-              "line": 216,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          }
-        },
-        {
-          "name": "text",
-          "type": "string",
-          "description": "`<paper-autocomplete>` `text`",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 221,
+              "line": 307,
               "column": 4
-            },
-            "end": {
-              "line": 224,
-              "column": 5
             }
           },
           "metadata": {
             "polymer": {
-              "notify": true
+              "attributeType": "Array"
+            }
+          }
+        },
+        {
+          "name": "text",
+          "type": "string | null | undefined",
+          "description": "`<paper-autocomplete>` `text`",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 312,
+              "column": 3
+            },
+            "end": {
+              "line": 315,
+              "column": 4
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "String"
             }
           }
         },
         {
           "name": "textProperty",
-          "type": "string",
+          "type": "string | null | undefined",
           "description": "`<paper-autocomplete>` `textProperty`",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 229,
-              "column": 4
+              "line": 320,
+              "column": 3
             },
             "end": {
-              "line": 232,
-              "column": 5
+              "line": 323,
+              "column": 4
             }
           },
           "metadata": {
-            "polymer": {}
+            "polymer": {
+              "attributeType": "String"
+            }
           },
           "defaultValue": "\"text\""
         },
         {
           "name": "valueProperty",
-          "type": "string",
+          "type": "string | null | undefined",
           "description": "`source` item value property to store in `selectedItems`\nif empty, use the whole object",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 238,
-              "column": 4
+              "line": 329,
+              "column": 3
             },
             "end": {
-              "line": 241,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "defaultValue": "\"value\""
-        },
-        {
-          "name": "_placeholder",
-          "type": "string",
-          "description": "`<paper-autocomplete>`/`<paper-input>` `placeholder`\nSet to \"...\" when we have one or more selections",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 247,
+              "line": 332,
               "column": 4
-            },
-            "end": {
-              "line": 250,
-              "column": 5
             }
           },
           "metadata": {
             "polymer": {
-              "readOnly": true
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"value\""
+        },
+        {
+          "name": "focused",
+          "type": "boolean | null | undefined",
+          "description": "`focused` If true, the element currently has focus.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 337,
+              "column": 3
+            },
+            "end": {
+              "line": 340,
+              "column": 4
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "Boolean"
+            }
+          }
+        },
+        {
+          "name": "disabled",
+          "type": "boolean | null | undefined",
+          "description": "disables `<paper-autocomplete>`",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 345,
+              "column": 3
+            },
+            "end": {
+              "line": 347,
+              "column": 4
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
             }
           }
         },
         {
           "name": "_selection",
-          "type": "Object",
+          "type": "Object | null | undefined",
           "description": "`<paper-autocomplete>` `value` receiever",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 255,
-              "column": 4
+              "line": 352,
+              "column": 3
             },
             "end": {
-              "line": 258,
-              "column": 5
+              "line": 355,
+              "column": 4
             }
           },
           "metadata": {
             "polymer": {
-              "observer": "\"_selectionChanged\""
+              "observer": "\"_selectionChanged\"",
+              "attributeType": "Object"
             }
           }
         }
       ],
       "methods": [
         {
-          "name": "_clearItemSelection",
-          "description": "",
+          "name": "_argumentsToObject",
+          "description": "Convert arguments to an object, skipping some argument.",
           "privacy": "protected",
           "sourceRange": {
+            "file": "../@neovici/cosmoz-i18next/cosmoz-i18next.js",
             "start": {
-              "line": 262,
-              "column": 3
+              "line": 36,
+              "column": 1
             },
             "end": {
-              "line": 266,
-              "column": 4
+              "line": 39,
+              "column": 2
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "event"
+              "name": "args",
+              "type": "array",
+              "description": "Arguments."
             },
             {
-              "name": "detail"
+              "name": "skipnum",
+              "type": "number",
+              "description": "Argument number to skip."
             }
-          ]
+          ],
+          "return": {
+            "type": "object",
+            "desc": "Resulting object with arguments."
+          },
+          "inheritedFrom": "translatable"
         },
         {
-          "name": "_computePlaceholder",
-          "description": "",
+          "name": "_arrayToObject",
+          "description": "Convert an array to an object.",
           "privacy": "protected",
           "sourceRange": {
+            "file": "../@neovici/cosmoz-i18next/cosmoz-i18next.js",
             "start": {
-              "line": 268,
-              "column": 3
+              "line": 46,
+              "column": 1
             },
             "end": {
-              "line": 270,
-              "column": 4
+              "line": 59,
+              "column": 2
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "numSelected"
+              "name": "array",
+              "type": "array",
+              "description": "Array to convert."
             }
-          ]
+          ],
+          "return": {
+            "type": "object",
+            "desc": "Resulting object."
+          },
+          "inheritedFrom": "translatable"
+        },
+        {
+          "name": "_ensureInitialized",
+          "description": "Ensure mixin is initialized.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@neovici/cosmoz-i18next/cosmoz-i18next.js",
+            "start": {
+              "line": 65,
+              "column": 1
+            },
+            "end": {
+              "line": 71,
+              "column": 2
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "translatable"
+        },
+        {
+          "name": "_",
+          "description": "Convenience method for gettext. Translates a text.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@neovici/cosmoz-i18next/cosmoz-i18next.js",
+            "start": {
+              "line": 78,
+              "column": 1
+            },
+            "end": {
+              "line": 80,
+              "column": 2
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "key",
+              "type": "string",
+              "description": "Translation key."
+            }
+          ],
+          "return": {
+            "type": "string",
+            "desc": "Translated text."
+          },
+          "inheritedFrom": "translatable"
+        },
+        {
+          "name": "connectedCallback",
+          "description": "Runs when connected.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@neovici/cosmoz-i18next/cosmoz-i18next.js",
+            "start": {
+              "line": 85,
+              "column": 1
+            },
+            "end": {
+              "line": 88,
+              "column": 2
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "translatable"
+        },
+        {
+          "name": "disconnectedCallback",
+          "description": "Runs when disconnected.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@neovici/cosmoz-i18next/cosmoz-i18next.js",
+            "start": {
+              "line": 93,
+              "column": 1
+            },
+            "end": {
+              "line": 99,
+              "column": 2
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "translatable"
+        },
+        {
+          "name": "gettext",
+          "description": "Translates a text.\n\nExample of basic translation:\n`_(string, t)`\n <div>{{ _(‘My translation’, t) }}</div>\n\nExample of basic translation with interpolation:\n`_(string, [args], t)`\n <div>{{ _(‘Hello {0}’, user.name, t) }}</div>",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@neovici/cosmoz-i18next/cosmoz-i18next.js",
+            "start": {
+              "line": 115,
+              "column": 1
+            },
+            "end": {
+              "line": 117,
+              "column": 2
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "key",
+              "type": "string",
+              "description": "Text to translate."
+            }
+          ],
+          "return": {
+            "type": "string",
+            "desc": "Translated text."
+          },
+          "inheritedFrom": "translatable"
+        },
+        {
+          "name": "gettextgeneric",
+          "description": "Generic handler for text translation",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@neovici/cosmoz-i18next/cosmoz-i18next.js",
+            "start": {
+              "line": 125,
+              "column": 1
+            },
+            "end": {
+              "line": 131,
+              "column": 2
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "key",
+              "type": "string",
+              "description": "Text to translate."
+            },
+            {
+              "name": "callerArgs",
+              "type": "array",
+              "description": "Arguments from the calling function."
+            }
+          ],
+          "return": {
+            "type": "string",
+            "desc": "Translated text."
+          },
+          "inheritedFrom": "translatable"
+        },
+        {
+          "name": "ngettext",
+          "description": "Plural version of gettext. Translates a text to the current locale\nusing the first numeric argument after the two first arguments to\ndetermine if output should be singular or plural.\n\nExample of translation in singular or plural:\n`ngettext(singular, plural, count, t)`\n<div>{{ ngettext(‘My translation’,\n ‘My translations’, count, t) }}</div>\n\nExample of translation in singular or plural with interpolation:\n`ngettext(singular, plural, [count and other args], t)`\n<div>{{ ngettext(‘My translation for “{1}”’,\n ‘My {0} translations for “{1}”’, count, ‘hello’, t) }}</div>",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@neovici/cosmoz-i18next/cosmoz-i18next.js",
+            "start": {
+              "line": 151,
+              "column": 1
+            },
+            "end": {
+              "line": 169,
+              "column": 2
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "singular",
+              "type": "string",
+              "description": "Singular text variant."
+            },
+            {
+              "name": "plural",
+              "type": "string",
+              "description": "Plural text variant."
+            }
+          ],
+          "return": {
+            "type": "string",
+            "desc": "Translated text."
+          },
+          "inheritedFrom": "translatable"
+        },
+        {
+          "name": "pgettext",
+          "description": "Translates a text using a specific context.\n\nExample of translation with context:\n`pgettext(context, ‘text’, t)`\n <div>{{ pgettext(‘Cancel Invoice’, ‘Cancel’, t) }}</div>\n\nExample of translation including context with interpolation:\n`pgettext(context, ‘text’, [args], t)`\n<div>{{ pgettext(‘Cancel Invoice’, ‘Cancel {0}’,\n document.type, t) }}</div>",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@neovici/cosmoz-i18next/cosmoz-i18next.js",
+            "start": {
+              "line": 186,
+              "column": 1
+            },
+            "end": {
+              "line": 194,
+              "column": 2
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "context",
+              "type": "string",
+              "description": "Context text."
+            },
+            {
+              "name": "key",
+              "type": "string",
+              "description": "Text to translate."
+            }
+          ],
+          "return": {
+            "type": "string",
+            "desc": "Translated text."
+          },
+          "inheritedFrom": "translatable"
+        },
+        {
+          "name": "npgettext",
+          "description": "Translates a text in singular or plural with a specific context.\n\nExample of translation in singular or plural with context:\n`npgettext(context, singular, plural, count, t)`\n<div>{{ npgettext('Cancel invoice', ‘My cancellation’,\n ‘My {0} cancellations’, count, t) }}</div>\n\nExample of translation in singular or plural with context and\ninterpolation:\n`npgettext(context, singular, plural, count, t)`\n<div>{{ npgettext('Cancel invoice', ‘My {1} cancellation’,\n ‘My {0} {1} cancellations’, count, document.type, t) }}</div>",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@neovici/cosmoz-i18next/cosmoz-i18next.js",
+            "start": {
+              "line": 214,
+              "column": 1
+            },
+            "end": {
+              "line": 236,
+              "column": 2
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "context",
+              "type": "string",
+              "description": "Context text."
+            },
+            {
+              "name": "singular",
+              "type": "string",
+              "description": "Singular text variant."
+            },
+            {
+              "name": "plural",
+              "type": "string",
+              "description": "Plural text variant."
+            }
+          ],
+          "return": {
+            "type": "string",
+            "desc": "Translated text."
+          },
+          "inheritedFrom": "translatable"
+        },
+        {
+          "name": "_clearItemSelection",
+          "description": "Clear the selected items.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 365,
+              "column": 1
+            },
+            "end": {
+              "line": 375,
+              "column": 2
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "event",
+              "type": "object",
+              "description": "Polymer event object."
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
         },
         {
           "name": "_getChipText",
-          "description": "",
+          "description": "Get text for the chip labels.",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 272,
-              "column": 3
+              "line": 382,
+              "column": 1
             },
             "end": {
-              "line": 277,
-              "column": 4
+              "line": 388,
+              "column": 2
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "item"
+              "name": "item",
+              "type": "object",
+              "description": "Item."
             },
             {
-              "name": "textProperty"
+              "name": "textProperty",
+              "type": "string",
+              "description": "Property in the item where the text is located."
             }
-          ]
+          ],
+          "return": {
+            "type": "void"
+          }
         },
         {
           "name": "_selectionChanged",
-          "description": "",
+          "description": "Update the selected items and request handle of suggestions.",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 279,
-              "column": 3
+              "line": 394,
+              "column": 1
             },
             "end": {
-              "line": 294,
-              "column": 4
+              "line": 408,
+              "column": 2
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "newSelection"
+              "name": "newSelection",
+              "type": "object",
+              "description": "Selected item."
             }
-          ]
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "validate",
+          "description": "Check whether the input is valid or not.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 413,
+              "column": 1
+            },
+            "end": {
+              "line": 435,
+              "column": 2
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "boolean",
+            "desc": "Whether the input is valid or not."
+          }
         }
       ],
       "staticMethods": [],
@@ -312,144 +865,291 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 106,
-          "column": 10
+          "line": 51,
+          "column": 0
         },
         "end": {
-          "line": 295,
-          "column": 3
+          "line": 436,
+          "column": 1
         }
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "PaperAutocompleteChips",
       "attributes": [
+        {
+          "name": "t",
+          "description": "",
+          "sourceRange": {
+            "file": "../@neovici/cosmoz-i18next/cosmoz-i18next.js",
+            "start": {
+              "line": 21,
+              "column": 3
+            },
+            "end": {
+              "line": 26,
+              "column": 4
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined",
+          "inheritedFrom": "translatable"
+        },
         {
           "name": "label",
           "description": "`<paper-autocomplete>`/`<paper-input>` `label`",
           "sourceRange": {
             "start": {
-              "line": 115,
-              "column": 4
+              "line": 138,
+              "column": 3
             },
             "end": {
-              "line": 118,
-              "column": 5
+              "line": 141,
+              "column": 4
             }
           },
           "metadata": {},
-          "type": "string"
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "error-message",
+          "description": "`errorMessage` The error message to display when the input is invalid.",
+          "sourceRange": {
+            "start": {
+              "line": 155,
+              "column": 3
+            },
+            "end": {
+              "line": 157,
+              "column": 4
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
         },
         {
           "name": "min-length",
           "description": "`<paper-autocomplete>` `minLength`",
           "sourceRange": {
             "start": {
-              "line": 123,
-              "column": 4
+              "line": 162,
+              "column": 3
             },
             "end": {
-              "line": 126,
-              "column": 5
+              "line": 165,
+              "column": 4
             }
           },
           "metadata": {},
-          "type": "number"
+          "type": "number | null | undefined"
+        },
+        {
+          "name": "min",
+          "description": "Minimum limit of selected items, set to 0 to disable.",
+          "sourceRange": {
+            "start": {
+              "line": 170,
+              "column": 3
+            },
+            "end": {
+              "line": 173,
+              "column": 4
+            }
+          },
+          "metadata": {},
+          "type": "number | null | undefined"
+        },
+        {
+          "name": "max",
+          "description": "Maximum limit of selected items, set to 0 to disable.",
+          "sourceRange": {
+            "start": {
+              "line": 178,
+              "column": 3
+            },
+            "end": {
+              "line": 181,
+              "column": 4
+            }
+          },
+          "metadata": {},
+          "type": "number | null | undefined"
+        },
+        {
+          "name": "required",
+          "description": "`required` state for the component",
+          "sourceRange": {
+            "start": {
+              "line": 186,
+              "column": 3
+            },
+            "end": {
+              "line": 189,
+              "column": 4
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "show-results-on-focus",
+          "description": "Set to `true` to show available suggestions on focus. This overrides the default behavior that only shows\nnotifications after user types.",
+          "sourceRange": {
+            "start": {
+              "line": 195,
+              "column": 3
+            },
+            "end": {
+              "line": 197,
+              "column": 4
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "no-value-label",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 199,
+              "column": 3
+            },
+            "end": {
+              "line": 202,
+              "column": 4
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
         },
         {
           "name": "query-fn",
           "description": "`<paper-autocomplete>` `queryFn`",
           "sourceRange": {
             "start": {
-              "line": 131,
-              "column": 4
+              "line": 207,
+              "column": 3
             },
             "end": {
-              "line": 198,
-              "column": 5
+              "line": 289,
+              "column": 4
             }
           },
           "metadata": {},
-          "type": "Function"
+          "type": "Function | null | undefined"
         },
         {
           "name": "selected-items",
           "description": "Selected items from `source`",
           "sourceRange": {
             "start": {
-              "line": 203,
-              "column": 4
+              "line": 294,
+              "column": 3
             },
             "end": {
-              "line": 209,
-              "column": 5
+              "line": 300,
+              "column": 4
             }
           },
           "metadata": {},
-          "type": "Array"
+          "type": "Array | null | undefined"
         },
         {
           "name": "source",
           "description": "`<paper-autocomplete>` `source`",
           "sourceRange": {
             "start": {
-              "line": 214,
-              "column": 4
+              "line": 305,
+              "column": 3
             },
             "end": {
-              "line": 216,
-              "column": 5
+              "line": 307,
+              "column": 4
             }
           },
           "metadata": {},
-          "type": "Array"
+          "type": "Array | null | undefined"
         },
         {
           "name": "text",
           "description": "`<paper-autocomplete>` `text`",
           "sourceRange": {
             "start": {
-              "line": 221,
-              "column": 4
+              "line": 312,
+              "column": 3
             },
             "end": {
-              "line": 224,
-              "column": 5
+              "line": 315,
+              "column": 4
             }
           },
           "metadata": {},
-          "type": "string"
+          "type": "string | null | undefined"
         },
         {
           "name": "text-property",
           "description": "`<paper-autocomplete>` `textProperty`",
           "sourceRange": {
             "start": {
-              "line": 229,
-              "column": 4
+              "line": 320,
+              "column": 3
             },
             "end": {
-              "line": 232,
-              "column": 5
+              "line": 323,
+              "column": 4
             }
           },
           "metadata": {},
-          "type": "string"
+          "type": "string | null | undefined"
         },
         {
           "name": "value-property",
           "description": "`source` item value property to store in `selectedItems`\nif empty, use the whole object",
           "sourceRange": {
             "start": {
-              "line": 238,
-              "column": 4
+              "line": 329,
+              "column": 3
             },
             "end": {
-              "line": 241,
-              "column": 5
+              "line": 332,
+              "column": 4
             }
           },
           "metadata": {},
-          "type": "string"
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "focused",
+          "description": "`focused` If true, the element currently has focus.",
+          "sourceRange": {
+            "start": {
+              "line": 337,
+              "column": 3
+            },
+            "end": {
+              "line": 340,
+              "column": 4
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "disabled",
+          "description": "disables `<paper-autocomplete>`",
+          "sourceRange": {
+            "start": {
+              "line": 345,
+              "column": 3
+            },
+            "end": {
+              "line": 347,
+              "column": 4
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
         }
       ],
       "events": [
@@ -464,45 +1164,23 @@
           "name": "text-changed",
           "description": "Fired when the `text` property changes.",
           "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "focused-changed",
+          "description": "Fired when the `focused` property changes.",
+          "metadata": {}
         }
       ],
       "styling": {
         "cssVariables": [],
         "selectors": []
       },
-      "slots": [
-        {
-          "description": "",
-          "name": "prefix",
-          "range": {
-            "file": "paper-autocomplete-chips.html",
-            "start": {
-              "line": 88,
-              "column": 3
-            },
-            "end": {
-              "line": 88,
-              "column": 44
-            }
-          }
-        },
-        {
-          "description": "",
-          "name": "suffix",
-          "range": {
-            "file": "paper-autocomplete-chips.html",
-            "start": {
-              "line": 94,
-              "column": 3
-            },
-            "end": {
-              "line": 94,
-              "column": 44
-            }
-          }
-        }
-      ],
-      "tagname": "paper-autocomplete-chips"
+      "slots": [],
+      "tagname": "paper-autocomplete-chips",
+      "mixins": [
+        "translatable"
+      ]
     }
   ]
 }
