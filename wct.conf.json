@@ -17,7 +17,7 @@
       "dir": "./coverage",
       "reporters": ["text-summary", "lcov"],
       "include": [
-        "paper-autocomplete-chips.html"
+        "**/paper-*.js"
       ],
       "exclude": []
     },
@@ -29,11 +29,7 @@
       }, {
         "browserName": "chrome",
         "platform": "Windows 10",
-        "version": "dev"
-      }, {
-        "browserName": "chrome",
-        "platform": "Windows 10",
-        "version": "beta"
+        "version": "latest"
       }, {
         "browserName": "firefox",
         "platform": "Windows 10",

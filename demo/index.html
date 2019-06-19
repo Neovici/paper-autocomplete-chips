@@ -6,16 +6,17 @@
 
 		<title>paper-autocomplete-chips demo</title>
 
-		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 
-		<link rel="import" href="../../polymer/polymer.html">
-		<link rel="import" href="../../paper-styles/demo-pages.html">
-		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-		<link rel="import" href="../paper-autocomplete-chips.html">
-		
-		<link rel="import" href="../../paper-dialog/paper-dialog.html">
-		<link rel="import" href="../../paper-dialog-scrollable/paper-dialog-scrollable.html">
+		<script type="module" src="/components/@polymer/polymer/polymer-legacy.js"></script>
+		<script type="module" src="/components/@polymer/paper-styles/demo-pages.js"></script>
+		<script type="module" src="/components/@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+		<script type="module" src="/components/@polymer/iron-demo-helpers/demo-snippet.js"></script>
+
+		<script type="module" src="/components/@polymer/paper-dialog/paper-dialog.js"></script>
+		<script type="module" src="/components/@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js"></script>
+
+		<script type="module" src="../paper-autocomplete-chips.js"></script>
 		<custom-style>
 			<style include="demo-pages-shared-styles">
 				div {
@@ -46,79 +47,55 @@
 		<div class="vertical-section-container centered">
 			<h4>Basic</h4>
 			<demo-snippet>
-				<paper-autocomplete-chips
-					id="t1"
-					text-property="label"
-					label="Search 1">
+				<paper-autocomplete-chips id="t1" text-property="label" label="Search 1">
 				</paper-autocomplete-chips>
-				<paper-autocomplete-chips
-					id="t2"
-					label="Search 2">
+				<paper-autocomplete-chips id="t2" label="Search 2">
 				</paper-autocomplete-chips>
 				<button onclick="dialog.open()">Open Dialog</button>
 				<paper-dialog id="dialog">
 					<h2>Dialog</h2>
 					<paper-dialog-scrollable>
-						<paper-autocomplete-chips show-results-on-focus
-							id="t3"
-							label="Search 3">
+						<paper-autocomplete-chips show-results-on-focus id="t3" label="Search 3">
 						</paper-autocomplete-chips>
 					</paper-dialog-scrollable>
 				</paper-dialog>
 			</demo-snippet>
 		</div>
 
-		<script>
-			(function () {
-				var demoItems,
-					i,
-					t;
+		<script type="module">
+			document.querySelector('#t1').source = [{
+				value: 'one',
+				test: 'test',
+				label: 'Red selection'
+			}, {
+				id: 'two',
+				label: 'Blue selection'
+			}, {
+				id: 'three',
+				label: 'Green selection'
+			}, {
+				id: 'four',
+				label: 'Yellow selection'
+			}, {
+				id: 'five',
+				label: 'White selection'
+			}, {
+				id: 'six',
+				label: 'Black selection'
+			}];
 
-				document.querySelector('#t1').source = [{
-					value: 'one',
-					test: 'test',
-					label: 'Red selection'
-				}, {
-					id: 'two',
-					label: 'Blue selection'
-				}, {
-					id: 'three',
-					label: 'Green selection'
-				}, {
-					id: 'four',
-					label: 'Yellow selection'
-				}, {
-					id: 'five',
-					label: 'White selection'
-				}, {
-					id: 'six',
-					label: 'Black selection'
-				}];
+			document.querySelector('#t2').source = [
+				'Red',
+				'Green',
+				'Yellow'
+			];
 
-				document.querySelector('#t2').source = [
-					'Red',
-					'Green',
-					'Yellow'
-				];
-
-				document.querySelector('#t3').source = [
-					'Red',
-					'Green',
-					'Yellow',
-					'Black'
-				];
-
-				t = new Array(11);
-				for (i = 1; i <= 10; i += 1) {
-					t[i] = document.querySelector('#t' + i);
-					if (!t[i]) {
-						continue;
-					}
-					if (i !== 3 || i !== 4) {
-						t[i].demoItems = demoItems;
-					}
-				}
-			})();
+			document.querySelector('#t3').source = [
+				'Red',
+				'Green',
+				'Yellow',
+				'Black'
+			];
 		</script>
 	</body>
 </html>
