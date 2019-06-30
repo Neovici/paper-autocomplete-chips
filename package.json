@@ -1,6 +1,6 @@
 {
-	"name": "paper-autocomplete-chips",
-	"version": "1.0.0",
+	"name": "@neovici/paper-autocomplete-chips",
+	"version": "3.0.1",
 	"description": "[![Build Status](https://travis-ci.org/Neovici/paper-autocomplete-chips.svg?branch=master)](https://travis-ci.org/Neovici/paper-autocomplete-chips)",
 	"keywords": [
 		"polymer",
@@ -23,6 +23,8 @@
 	"scripts": {
 		"analyze": "polymer analyze --input paper-*.js  > analysis.json",
 		"lint": "eslint --cache --ext .js,.html . && polymer lint paper-*.js",
+		"preversion": "npm run lint && npm run test -- --skip-plugin sauce",
+		"postversion": "git push && git push --tags",
 		"start": "polymer serve -o",
 		"test": "polymer test"
 	},
