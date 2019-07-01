@@ -29,8 +29,8 @@
 		"test": "polymer test"
 	},
 	"dependencies": {
-		"@neovici/cosmoz-i18next": "neovici/cosmoz-i18next#semver:^3.0.0",
-		"@neovici/paper-autocomplete": "neovici/paper-autocomplete#semver:^4.0.0",
+		"@neovici/cosmoz-i18next": "github:neovici/cosmoz-i18next#semver:^3.0.1",
+		"@neovici/paper-autocomplete": "github:neovici/paper-autocomplete#semver:^4.0.1",
 		"@polymer/iron-flex-layout": "^3.0.1",
 		"@polymer/iron-icon": "^3.0.0",
 		"@polymer/paper-item": "^3.0.1",
@@ -39,7 +39,7 @@
 		"@webcomponents/shadycss": "^1.9.1"
 	},
 	"devDependencies": {
-		"@neovici/eslint-config": "neovici/eslint-config#semver:^1.0.0",
+		"@neovici/eslint-config": "github:neovici/eslint-config#semver:^1.0.0",
 		"@polymer/iron-component-page": "^4.0.0",
 		"@polymer/iron-demo-helpers": "^3.0.0",
 		"@polymer/iron-test-helpers": "^3.0.0",
