@@ -1,6 +1,6 @@
 {
 	"name": "@neovici/paper-autocomplete-chips",
-	"version": "3.0.2",
+	"version": "3.0.3",
 	"description": "[![Build Status](https://travis-ci.org/Neovici/paper-autocomplete-chips.svg?branch=master)](https://travis-ci.org/Neovici/paper-autocomplete-chips)",
 	"keywords": [
 		"polymer",
