@@ -118,7 +118,7 @@ class PaperAutocompleteChips extends translatable(PolymerElement) {
 			<slot name="prefix" slot="prefix"></slot>
 			<slot name="suffix" slot="suffix"></slot>
 			<template slot="autocomplete-custom-template">
-				<paper-item id\$="[[ _getSuggestionId(index) ]]" role="option" aria-selected="false" on-tap="_onSelect">
+				<paper-item id$="[[ _getSuggestionId(index) ]]" role="option" aria-selected="false" on-tap="_onSelect">
 					<div inner-h-t-m-l="[[ item.html ]]"></div>
 					<paper-ripple></paper-ripple>
 				</paper-item>
