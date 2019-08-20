@@ -199,7 +199,7 @@ class PaperAutocompleteChips extends translatable(PolymerElement) {
 
 			noValueLabel: {
 				type: String,
-				computed: '_("No value", t)'
+				value: '\u2205'
 			},
 
 			/**
