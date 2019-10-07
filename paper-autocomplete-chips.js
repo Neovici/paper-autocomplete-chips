@@ -65,7 +65,6 @@ class PaperAutocompleteChips extends translatable(PolymerElement) {
 				@apply --layout-horizontal;
 				@apply --layout-end;
 				@apply --layout-wrap;
-				max-width: 90%;
 			}
 			.chip {
 				border-radius: 500px;
