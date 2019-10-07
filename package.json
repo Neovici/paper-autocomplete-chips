@@ -36,7 +36,7 @@
 		"@polymer/paper-item": "^3.0.1",
 		"@polymer/paper-ripple": "^3.0.1",
 		"@polymer/polymer": "^3.0.0",
-		"@webcomponents/shadycss": "^1.9.1"
+		"@webcomponents/shadycss": "^1.9.2"
 	},
 	"devDependencies": {
 		"@neovici/eslint-config": "github:neovici/eslint-config#semver:^1.0.0",
@@ -46,15 +46,15 @@
 		"@polymer/paper-dialog": "^3.0.0",
 		"@polymer/paper-dialog-scrollable": "^3.0.0",
 		"@polymer/test-fixture": "^4.0.2",
-		"@webcomponents/webcomponentsjs": "^2.0.0",
-		"babel-eslint": "^10.0.2",
+		"@webcomponents/webcomponentsjs": "^2.3.0",
+		"babel-eslint": "^10.0.3",
 		"chai": "^4.2.0",
 		"eslint": "^5.0.0",
 		"eslint-plugin-html": "^5.0.0",
-		"eslint-plugin-import": "^2.17.3",
+		"eslint-plugin-import": "^2.18.2",
 		"eslint-plugin-mocha": "^5.0.0",
 		"mocha": "^5.0.0",
-		"polymer-cli": "^1.8.0",
+		"polymer-cli": "^1.9.11",
 		"wct-istanbul": "^0.14.3",
 		"wct-mocha": "^1.0.0"
 	}
