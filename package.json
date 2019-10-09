@@ -1,6 +1,6 @@
 {
 	"name": "@neovici/paper-autocomplete-chips",
-	"version": "3.1.0",
+	"version": "3.1.1",
 	"description": "A multi-selection chips version of paper-autocomplete.",
 	"keywords": [
 		"polymer",
