@@ -29,7 +29,7 @@ import { html } from '@polymer/polymer/lib/utils/html-tag';
 /**
  * `paper-autocomplete-chips` is a multi-selection autocomplete element.
  *
- * <paper-autocomplete-chips label="Search" items='["Red", "Blue", "Green", "Yellow"]'>
+ * <paper-autocomplete-chips label="Search" items='["Red", "Blue", "Green", "Yellow", ""]'>
  * </paper-autocomplete-chips>
  *
  *
@@ -106,8 +106,10 @@ class PaperAutocompleteChips extends translatable(PolymerElement) {
 			}
 		</style>
 		<div id="chips">
-			<template is="dom-repeat" items="[[ selectedItems ]]">
-				<div class="chip"><span>[[ _getChipText(item, textProperty) ]]</span><iron-icon icon="clear" on-click="_clearItemSelection"></iron-icon></div>
+			<template is="dom-repeat" items="[[ createChips(selectedItems.*, textProperty) ]]" as="chip">
+				<div class="chip" title="[[ chip.title ]]">
+					<span hidden="[[ chip.hidden ]]">[[ chip.description ]]</span><iron-icon icon="clear" on-click="_clearChipSelection"></iron-icon>
+				</div>
 			</template>
 		</div>
 		<paper-autocomplete id="ac" min-length="0" label="[[ label ]]" source="[[ source ]]"
@@ -149,7 +151,6 @@ class PaperAutocompleteChips extends translatable(PolymerElement) {
 				type: Boolean,
 				value: false
 			},
-
 
 			/**
 			* `errorMessage` The error message to display when the input is invalid.
@@ -349,25 +350,26 @@ class PaperAutocompleteChips extends translatable(PolymerElement) {
 			},
 
 			/**
-			 * `<paper-autocomplete>` `value` receiever
+			 * `<paper-autocomplete>` `value` receiver
 			 */
 			_selection: {
 				type: Object,
 				observer: '_selectionChanged'
 			}
-
 		};
 	}
 
 	/**
-	 * Clear the selected items.
+	 * Clear the selected chip.
 	 * @param {object} event Polymer event object.
 	 * @returns {void}
 	 */
-	_clearItemSelection(event) {
-		const item = event.model.item,
-			selectedIndex = this.selectedItems.indexOf(item);
-
+	_clearChipSelection(event) {
+		const chip = event.model.chip;
+		let selectedIndex = this.selectedItems.indexOf(chip.description);
+		if (selectedIndex === -1) {
+			selectedIndex = this.selectedItems.findIndex(item => item[this.textProperty] === chip.description);
+		}
 		// This will remove from the DOM the source element of the processed event ...
 		this.splice('selectedItems', selectedIndex, 1);
 		// ... so we must prevent further propagation of this event, because its source is now invalid.
@@ -375,18 +377,26 @@ class PaperAutocompleteChips extends translatable(PolymerElement) {
 		event.preventDefault();
 		event.stopPropagation();
 	}
-	/**
-	 * Get text for the chip labels.
-	 * @param {object} item Item.
-	 * @param {string} textProperty Property in the item where the text is located.
-	 * @returns {void}
-	 */
-	_getChipText(item, textProperty) {
-		let localItem = item;
-		if (typeof localItem === 'object') {
-			localItem = this.get(textProperty, localItem) || localItem.text;
+	createChips(itemList, textProperty) {
+		if (itemList == null || !Array.isArray(itemList.base)) {
+			return [];
 		}
-		return localItem !== '' ? localItem : this.noValueLabel;
+		return itemList.base.map(chip => {
+			if (typeof chip === 'object') {
+				const localDescription = this.get(textProperty, chip) || chip.text;
+				return {
+					...chip,
+					hidden: !localDescription,
+					description: localDescription || '',
+					title: localDescription || this.noValueLabel
+				};
+			}
+			return {
+				description: chip || '',
+				title: chip || this.noValueLabel,
+				hidden: !chip
+			};
+		});
 	}
 	/**
 	 * Update the selected items and request handle of suggestions.
