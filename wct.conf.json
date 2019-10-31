@@ -22,6 +22,7 @@
       "exclude": []
     },
     "sauce": {
+      "jobName": "paper-autocomplete-chips",
       "browsers": [{
         "browserName": "microsoftedge",
         "platform": "Windows 10",
@@ -33,7 +34,7 @@
       }, {
         "browserName": "firefox",
         "platform": "Windows 10",
-        "version": ""
+        "version": "latest-1"
       }, {
         "browserName": "safari",
         "platform": "macOS 10.13",
