@@ -229,6 +229,29 @@ class PaperAutocompleteChips extends translatable(PolymerElement) {
 								value: objText
 							};
 						},
+						sortResult = results => {
+							return results.sort((a, b) => {
+								if (a.text === this.noValueLabel) {
+									return -1;
+								}
+								if (b.text === this.noValueLabel) {
+									return 1;
+								}
+								if (a.idx < b.idx) {
+									return -1;
+								}
+								if (a.idx > b.idx) {
+									return 1;
+								}
+								if (a.text < b.text) {
+									return -1;
+								}
+								if (a.text > b.text) {
+									return 1;
+								}
+								return 0;
+							});
+						},
 						hasOtherObjectValue = value => {
 							const prop = this.get(this.valueProperty, value);
 							if (prop == null) {
@@ -238,6 +261,7 @@ class PaperAutocompleteChips extends translatable(PolymerElement) {
 								item => this.get(this.valueProperty, item) === prop
 							);
 						};
+
 
 					return (datasource, query) => { // eslint-disable-line max-statements
 						const results = [];
@@ -265,28 +289,18 @@ class PaperAutocompleteChips extends translatable(PolymerElement) {
 							}
 
 							const escapedQuery = query.replace(/[|\\{}()[\]^$+*?.-]/gu, '\\$&');
-							result.html = result.text.replace(new RegExp('(' + escapedQuery + ')', 'igu'), regexpResult);
+							if (result.text === this.noValueLabel) {
+								result.html = '<i>' + result.text.replace(new RegExp('(' + escapedQuery + ')', 'igu'), regexpResult) + '</i>';
+							} else {
+								result.html = result.text.replace(new RegExp('(' + escapedQuery + ')', 'igu'), regexpResult);
+							}
 							results.push(result);
 
 							if (results.length >= maxResults) {
 								break;
 							}
 						}
-						return results.sort((a, b) => {
-							if (a.idx < b.idx) {
-								return -1;
-							}
-							if (a.idx > b.idx) {
-								return 1;
-							}
-							if (a.text < b.text) {
-								return -1;
-							}
-							if (a.text > b.text) {
-								return 1;
-							}
-							return 0;
-						});
+						return sortResult(results);
 					};
 				}
 			},
