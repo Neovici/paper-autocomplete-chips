@@ -74,6 +74,18 @@
 					done();
 				});
 
+				test('Selecting null source', done => {
+					chips.source = ['A', '', 'C'];
+
+					select('');
+					assert.deepEqual(chips.selectedItems, ['']);
+
+					select('C');
+					assert.deepEqual(chips.selectedItems, ['', 'C']);
+
+					done();
+				});
+
 				test('Selecting object source', done => {
 					chips.source = [
 						{value: 1, label: 'One'},
@@ -110,6 +122,30 @@
 					assert.deepEqual(chips.selectedItems, [chips.source[1], chips.source[3]]);
 
 					done();
+				});
+
+				test('Search sorts suggestions and has correctly formatted no value chip', done => {
+					chips.textProperty = 'label';
+					autocomplete.text = 'e';
+
+					window.setTimeout(() => {
+						assert.equal(suggestions._suggestions.length, 5);
+						assert.equal(suggestions._suggestions[0].value.value, '');
+						assert.equal(suggestions._suggestions[4].value.label, 'zzzace');
+						assert.equal(suggestions._suggestions[0].html, '<i>No valu<b>e</b></i>');
+						done();
+					}, 200);
+
+					suggestions._input.dispatchEvent(new CustomEvent('focus', { bubbles: true, composed: true }));
+
+					chips.source = [
+						{value: 'z', label: 'zab'},
+						{value: 'x', label: 'zzzace'},
+						{value: '', label: 'No value'},
+						{value: 'd', label: 'eaaaf'},
+						{value: 'e', label: 'bbbegh'},
+						{value: 'k', label: 'ceccji'}
+					];
 				});
 
 				test('Source changed updates suggestions list', done => {
