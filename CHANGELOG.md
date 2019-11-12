@@ -1,3 +1,10 @@
+# [3.3.0](https://github.com/neovici/paper-autocomplete-chips/compare/v3.2.0...v3.3.0) (2019-11-12)
+
+
+### Features
+
+* changes no value chips to italic ([#58](https://github.com/neovici/paper-autocomplete-chips/issues/58)) ([4296591](https://github.com/neovici/paper-autocomplete-chips/commit/4296591)), closes [#50](https://github.com/neovici/paper-autocomplete-chips/issues/50)
+
 # [3.2.0](https://github.com/neovici/paper-autocomplete-chips/compare/v3.1.1...v3.2.0) (2019-10-31)
 
 
