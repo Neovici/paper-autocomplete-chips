@@ -283,6 +283,7 @@ class PaperAutocompleteChips extends translatable(PolymerElement) {
 							if (this.valueProperty && hasOtherObjectValue(result.value)) {
 								continue;
 							}
+
 							result.idx = result.text.toLowerCase().indexOf(query);
 							if (result.idx === -1) {
 								continue;

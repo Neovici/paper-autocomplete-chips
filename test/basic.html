@@ -131,7 +131,7 @@
 					window.setTimeout(() => {
 						assert.equal(suggestions._suggestions.length, 5);
 						assert.equal(suggestions._suggestions[0].value.value, '');
-						assert.equal(suggestions._suggestions[4].value.label, 'zzzeac');
+						assert.equal(suggestions._suggestions[4].value.label, 'zzzace');
 						assert.equal(suggestions._suggestions[0].html, '<i>No valu<b>e</b></i>');
 						done();
 					}, 200);
@@ -140,11 +140,11 @@
 
 					chips.source = [
 						{value: 'z', label: 'zab'},
-						{value: 'x', label: 'zzzeac'},
+						{value: 'x', label: 'zzzace'},
 						{value: '', label: 'No value'},
-						{value: 'd', label: 'aaaef'},
+						{value: 'd', label: 'eaaaf'},
 						{value: 'e', label: 'bbbegh'},
-						{value: 'k', label: 'ccceji'}
+						{value: 'k', label: 'ceccji'}
 					];
 				});
 
