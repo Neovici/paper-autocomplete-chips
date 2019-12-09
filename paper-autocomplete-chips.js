@@ -289,7 +289,7 @@ class PaperAutocompleteChips extends translatable(PolymerElement) {
 								continue;
 							}
 
-							const escapedQuery = query.replace(/[|\\{}()[\]^$+*?.-]/gu, '\\$&');
+							const escapedQuery = query.replace(/[|\\{}()[\]^$+*?.]/gu, '\\$&');
 							if (result.text === this.noValueLabel) {
 								result.html = '<i>' + result.text.replace(new RegExp('(' + escapedQuery + ')', 'igu'), regexpResult) + '</i>';
 							} else {
