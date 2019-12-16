@@ -173,12 +173,6 @@
 					chips.textProperty = 'label';
 					autocomplete.text = '-class & A.B selection(f';
 
-					window.setTimeout(() => {
-						assert.equal(suggestions._suggestions.length, 1);
-						assert.equal(suggestions._suggestions[0].value.label, 'Q-class & A.B selection(fake)');
-						done();
-					}, 200);
-
 					suggestions._input.dispatchEvent(new CustomEvent('focus', { bubbles: true, composed: true }));
 
 					chips.source = [
@@ -189,6 +183,13 @@
 						{label: 'k', value: 'gh'},
 						{label: 'alfa', value: 'ji'}
 					];
+
+					window.setTimeout(() => {
+						assert.equal(suggestions._suggestions.length, 1);
+						assert.equal(suggestions._suggestions[0].value.label, 'Q-class & A.B selection(fake)');
+						done();
+					}, 200);
+
 				});
 			});
 		</script>
