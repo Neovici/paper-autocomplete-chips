@@ -168,6 +168,29 @@
 						{value: 5, label: 'ji'}
 					];
 				});
+
+				test('Search with special characters', done => {
+					chips.textProperty = 'label';
+					autocomplete.text = '-class & A.B selection(f';
+
+					suggestions._input.dispatchEvent(new CustomEvent('focus', { bubbles: true, composed: true }));
+
+					chips.source = [
+						{label: 'Q-class & A.B selection(fake)', value: 'ab'},
+						{label: 'Q-class & A.B selection(real)', value: 'ac'},
+						{label: 'Yellow', value: 'ad'},
+						{label: 'ggg', value: 'ef'},
+						{label: 'k', value: 'gh'},
+						{label: 'alfa', value: 'ji'}
+					];
+
+					window.setTimeout(() => {
+						assert.equal(suggestions._suggestions.length, 1);
+						assert.equal(suggestions._suggestions[0].value.label, 'Q-class & A.B selection(fake)');
+						done();
+					}, 200);
+
+				});
 			});
 		</script>
 	</body>
