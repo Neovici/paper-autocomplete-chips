@@ -1,3 +1,10 @@
+### [3.3.1](https://github.com/neovici/paper-autocomplete-chips/compare/v3.3.0...v3.3.1) (2020-03-15)
+
+
+### Bug Fixes
+
+* remove unnecessary call to _handleSuggestions ([96bf091](https://github.com/neovici/paper-autocomplete-chips/commit/96bf091084baf3bafe87a5e1ed6784269a6ab993))
+
 # [3.3.0](https://github.com/neovici/paper-autocomplete-chips/compare/v3.2.0...v3.3.0) (2019-11-12)
 
 
