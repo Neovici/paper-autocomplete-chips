@@ -423,15 +423,7 @@ class PaperAutocompleteChips extends translatable(PolymerElement) {
 			return;
 		}
 		this.push('selectedItems', newSelection);
-		microTask.run(() => {
-			this.$.ac.clear();
-			// FIXME
-			this.$.ac.$.paperAutocompleteSuggestions._handleSuggestions({
-				target: {
-					value: ''
-				}
-			});
-		});
+		microTask.run(() => this.$.ac.clear());
 	}
 	/**
 	 * Check whether the input is valid or not.
