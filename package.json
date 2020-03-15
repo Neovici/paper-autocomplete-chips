@@ -35,7 +35,8 @@
 			"@semantic-release/npm",
 			"@semantic-release/git"
 		],
-		"branch": "master"
+		"branch": "master",
+		"preset": "conventionalcommits"
 	},
 	"publishConfig": {
 		"access": "public"
@@ -51,39 +52,39 @@
 		}
 	},
 	"dependencies": {
-		"@neovici/cosmoz-i18next": "^3.0.1",
-		"@neovici/paper-autocomplete": "^4.0.3",
-		"@polymer/iron-flex-layout": "^3.0.1",
+		"@neovici/cosmoz-i18next": "^3.0.0",
+		"@neovici/paper-autocomplete": "^4.0.0",
+		"@polymer/iron-flex-layout": "^3.0.0",
 		"@polymer/iron-icon": "^3.0.0",
-		"@polymer/paper-item": "^3.0.1",
-		"@polymer/paper-ripple": "^3.0.1",
+		"@polymer/paper-item": "^3.0.0",
+		"@polymer/paper-ripple": "^3.0.0",
 		"@polymer/polymer": "^3.0.0",
-		"@webcomponents/shadycss": "^1.9.2"
+		"@webcomponents/shadycss": "^1.9.0"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^8.2.0",
 		"@commitlint/config-conventional": "^8.2.0",
-		"@neovici/eslint-config": "^1.1.7",
-		"@neovici/github-actions-eslint-annotator": "^0.2.0",
+		"@neovici/eslint-config": "^1.2.0",
+		"@neovici/github-actions-eslint-annotator": "^0.4.0",
 		"@polymer/iron-component-page": "^4.0.0",
 		"@polymer/iron-demo-helpers": "^3.0.0",
 		"@polymer/iron-test-helpers": "^3.0.0",
 		"@polymer/paper-dialog": "^3.0.0",
 		"@polymer/paper-dialog-scrollable": "^3.0.0",
 		"@polymer/test-fixture": "^4.0.2",
-		"@semantic-release/changelog": "^3.0.4",
-		"@semantic-release/git": "^7.0.16",
+		"@semantic-release/changelog": "^5.0.0",
+		"@semantic-release/git": "^9.0.0",
 		"@webcomponents/webcomponentsjs": "^2.3.0",
 		"babel-eslint": "^10.0.3",
 		"chai": "^4.2.0",
-		"eslint": "^5.0.0",
-		"eslint-plugin-html": "^5.0.0",
-		"eslint-plugin-import": "^2.18.2",
-		"eslint-plugin-mocha": "^5.0.0",
-		"husky": "^3.0.8",
+		"eslint": "^6.8.0",
+		"eslint-plugin-html": "^6.0.0",
+		"eslint-plugin-import": "^2.20.0",
+		"eslint-plugin-mocha": "^6.3.0",
+		"husky": "^4.2.0",
 		"mocha": "^5.0.0",
 		"polymer-cli": "^1.9.11",
-		"semantic-release": "^16.0.0-beta.25",
+		"semantic-release": "^17.0.0",
 		"wct-istanbul": "^0.14.3",
 		"wct-mocha": "^1.0.0"
 	}
