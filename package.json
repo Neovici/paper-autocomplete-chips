@@ -84,7 +84,7 @@
 		"husky": "^4.2.0",
 		"mocha": "^5.0.0",
 		"polymer-cli": "^1.9.11",
-		"semantic-release": "^17.0.0",
+		"semantic-release": "^19.0.3",
 		"wct-istanbul": "^0.14.3",
 		"wct-mocha": "^1.0.0"
 	}
