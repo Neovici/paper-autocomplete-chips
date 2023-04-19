@@ -82,7 +82,7 @@
 		"eslint-plugin-import": "^2.20.0",
 		"eslint-plugin-mocha": "^6.3.0",
 		"husky": "^4.2.0",
-		"mocha": "^5.0.0",
+		"mocha": "^10.2.0",
 		"polymer-cli": "^1.9.11",
 		"semantic-release": "^17.0.0",
 		"wct-istanbul": "^0.14.3",
